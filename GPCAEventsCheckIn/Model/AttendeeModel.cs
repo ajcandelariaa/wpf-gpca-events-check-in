@@ -2,7 +2,7 @@
 
 namespace GPCAEventsCheckIn.Model
 {
-    public class DelegateModel
+    public class AttendeeModel
     {
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
