@@ -1,4 +1,5 @@
 ﻿using GPCAEventsCheckIn.Model;
+using GPCAEventsCheckIn.View.UserControl;
 using System.Windows.Controls;
 
 namespace GPCAEventsCheckIn.ViewModel
@@ -120,7 +121,7 @@ namespace GPCAEventsCheckIn.ViewModel
         public void NavigateToAttendeeListView(string previousView)
         {
             PreviousView = previousView;
-            CurrentView = new AttendeeListView(this, DelegateViewModel);
+            CurrentView = new AttendeeListView(this, AttendeeViewModel);
         }
 
         public void NavigateToSearchCategoryView(string previousView)
@@ -136,7 +137,7 @@ namespace GPCAEventsCheckIn.ViewModel
         }
         public void NavigateToHomeView()
         {
-            CurrentView = new HomeView(this, DelegateViewModel);
+            CurrentView = new HomeView(this, AttendeeViewModel);
         }
 
 

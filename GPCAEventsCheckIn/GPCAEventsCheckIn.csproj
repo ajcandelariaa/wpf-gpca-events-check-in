@@ -8,4 +8,50 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\Fonts\Arial\arial.ttf" />
+    <None Remove="Assets\Fonts\Arial\arialbd.ttf" />
+    <None Remove="Assets\Fonts\Arial\arialbi.ttf" />
+    <None Remove="Assets\Fonts\Arial\ariali.ttf" />
+    <None Remove="Assets\Images\Badges\img_2024_af_front_badge.png" />
+    <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Common\img_company_name.png" />
+    <None Remove="Assets\Images\Common\img_name_of_attendee.png" />
+    <None Remove="Assets\Images\Common\img_placeholder.png" />
+    <None Remove="Assets\Images\Common\img_return.png" />
+    <None Remove="Assets\Images\Common\img_scan_qr.png" />
+    <None Remove="Assets\Images\Common\img_search.png" />
+    <None Remove="Assets\Images\Common\img_transaction_id.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\Arial\arial.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Arial\arialbd.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Arial\arialbi.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Arial\ariali.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Pdfium.Net.SDK" Version="4.88.2704" />
+    <PackageReference Include="PDFsharp" Version="6.0.0" />
+    <PackageReference Include="QRCoder" Version="1.4.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.1" />
+    <PackageReference Include="ZXing.Net" Version="0.16.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Badges\img_2024_af_front_badge.png" />
+    <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
+    <Resource Include="Assets\Images\Common\img_company_name.png" />
+    <Resource Include="Assets\Images\Common\img_name_of_attendee.png" />
+    <Resource Include="Assets\Images\Common\img_placeholder.png" />
+    <Resource Include="Assets\Images\Common\img_return.png" />
+    <Resource Include="Assets\Images\Common\img_scan_qr.png" />
+    <Resource Include="Assets\Images\Common\img_search.png" />
+    <Resource Include="Assets\Images\Common\img_transaction_id.png" />
+  </ItemGroup>
+
 </Project>

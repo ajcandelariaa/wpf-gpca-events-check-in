@@ -1,0 +1,39 @@
+﻿<Window x:Class="GPCAEventsCheckIn.View.Window.QRCodeScannerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GPCAEventsCheckIn.View.Window"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="QR Code Scanner" Height="500" Width="600">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="430"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Video Capture Device:" />
+                    <ComboBox Grid.Column="1" x:Name="cbVideoCaptureDeviceList" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" SelectionChanged="cbVideoCaptureDeviceList_SelectionChanged"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Image Name="videoSourcePlayer" Width="600" Height="400" />
+        </Grid>
+
+        <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" 
+                Background="Transparent" Foreground="Black" BorderThickness="0" Width="50" Height="50" FontSize="30" FontFamily="Arial"
+                Click="Btn_CloseWindow" />
+    </Grid>
+</Window>
