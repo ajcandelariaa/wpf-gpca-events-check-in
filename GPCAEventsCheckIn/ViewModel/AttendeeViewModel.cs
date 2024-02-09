@@ -12,8 +12,22 @@ namespace GPCAEventsCheckIn.ViewModel
     {
         private readonly HttpClient _httpClient;
         private bool _isLoading;
+        private String? _loadingMessage;
 
         public ObservableCollection<AttendeeModel> ConfirmedAttendees { get; set; }
+
+        public String? LoadingMessage
+        {
+            get { return _loadingMessage; }
+            set
+            {
+                if (_loadingMessage != value)
+                {
+                    _loadingMessage = value;
+                    OnPropertyChanged(nameof(LoadingMessage));
+                }
+            }
+        }
 
         public bool IsLoading
         {
@@ -47,6 +61,7 @@ namespace GPCAEventsCheckIn.ViewModel
         {
             try
             {
+                LoadingMessage = "Fetching data...";
                 IsLoading = true;
 
                 ConfirmedAttendees.Clear();
@@ -68,6 +83,7 @@ namespace GPCAEventsCheckIn.ViewModel
             finally
             {
                 IsLoading = false;
+                LoadingMessage = null;
             }
         }
         private void ExecuteRefreshCommand()

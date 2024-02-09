@@ -28,7 +28,11 @@ namespace GPCAEventsCheckIn.View.UserControl
         {
             _mainViewModel.ReturnBack();
             _mainViewModel.SelectedCompanyName = null;
-            _mainViewModel.AttendeeSuggesstionList.Clear();
+
+            if(_mainViewModel.AttendeeSuggesstionList != null)
+            {
+                _mainViewModel.AttendeeSuggesstionList.Clear();
+            }
         }
 
         private void Tb_Keystroke(object sender, TextChangedEventArgs e)

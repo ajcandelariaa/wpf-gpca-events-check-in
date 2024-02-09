@@ -28,21 +28,28 @@ namespace GPCAEventsCheckIn.View.Window
 
         private void InitializeListOfCameras()
         {
-            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-            if (videoDevices.Count == 0)
+            try
             {
-                MessageBox.Show("No video devices found.");
-                return;
-            }
+                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
-            foreach (FilterInfo device in videoDevices)
+                if (videoDevices.Count == 0)
+                {
+                    MessageBox.Show("No video devices found.");
+                    return;
+                }
+
+                foreach (FilterInfo device in videoDevices)
+                {
+                    cbVideoCaptureDeviceList.Items.Add(device.Name);
+                }
+
+                cbVideoCaptureDeviceList.SelectedIndex = 0;
+                InitializeCamera(0);
+            }
+            catch (Exception ex)
             {
-                cbVideoCaptureDeviceList.Items.Add(device.Name);
+                MessageBox.Show($"Error initializing cameras: {ex.Message}");
             }
-
-            cbVideoCaptureDeviceList.SelectedIndex = 0;
-            InitializeCamera(0);
         }
 
         private void InitializeCamera(int cameraIndex)
@@ -74,7 +81,6 @@ namespace GPCAEventsCheckIn.View.Window
         {
             videoSource.SignalToStop();
             videoSource.WaitForStop();
-            videoSource = null;
         }
 
 
@@ -113,6 +119,7 @@ namespace GPCAEventsCheckIn.View.Window
                             else
                             {
                                 MessageBox.Show("Invalid QR Code, Please try again!");
+
                             }
                         }
                     });
@@ -151,6 +158,10 @@ namespace GPCAEventsCheckIn.View.Window
 
         private void Btn_CloseWindow(object sender, RoutedEventArgs e)
         {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                StopCamera();
+            }
             Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
             _mainViewModel.BackDropStatus = "Collapsed";
         }

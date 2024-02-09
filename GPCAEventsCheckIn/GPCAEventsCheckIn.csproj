@@ -14,6 +14,7 @@
     <None Remove="Assets\Fonts\Arial\arialbi.ttf" />
     <None Remove="Assets\Fonts\Arial\ariali.ttf" />
     <None Remove="Assets\Images\Badges\img_2024_af_front_badge.png" />
+    <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Common\img_company_name.png" />
     <None Remove="Assets\Images\Common\img_name_of_attendee.png" />
@@ -44,6 +45,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\Images\Badges\img_2024_af_front_badge.png" />
+    <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
     <Resource Include="Assets\Images\Common\img_company_name.png" />
     <Resource Include="Assets\Images\Common\img_name_of_attendee.png" />

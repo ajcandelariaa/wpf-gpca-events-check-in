@@ -6,96 +6,117 @@
              xmlns:local="clr-namespace:GPCAEventsCheckIn.View.UserControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1366">
-    <Grid Background="#FFFFFF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <Grid Background="#FFFFFF">
+            <Border Grid.Row="1" Background="#f2f2f2" CornerRadius="20">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+                    <Border Background="#e8e8e8" CornerRadius="20" Padding="10" >
+                        <StackPanel>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Name:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.FullName}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-            <Image Grid.Row="0" Source="../../Assets/Images/Common/img_return.png" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20 20 0 0" Width="200" Height="50" MouseLeftButtonDown="Btn_Return"/>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Job Title:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.JobTitle}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-            <Grid Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 20 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="6*"/>
-                </Grid.ColumnDefinitions>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Company Name:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.CompanyName}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-                <Image Grid.Column="0" Source="../../Assets/Images/Common/img_placeholder.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Width="300" Height="300"/>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Badge Type:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.BadgeType}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-                <Grid Grid.Column="1" Margin="20 0 0 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Transaction ID:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.TransactionId}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Transaction ID:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.TransactionId}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <TextBlock Text="Full Name:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.FullName}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="2">
-                        <TextBlock Text="Job Title:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.JobTitle}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="3">
-                        <TextBlock Text="Company Name:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.CompanyName}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="4">
-                        <TextBlock Text="Badge Type:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.BadgeType}" FontSize="16"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="5">
-                        <TextBlock Text="Seat Number:" FontSize="16" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" />
-                        <TextBlock Text="{Binding CurrentAttendee.SeatNumber}" FontSize="16"/>
-                    </StackPanel>
-                </Grid>
-            </Grid>
-        </Grid>
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                                <Grid Margin="10 0 10 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Seat Number:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.SeatNumber}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Border>
 
-        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="450" Margin="5,0"/>
-
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Text="BADGE PREVIEW:" FontSize="22" FontWeight="Bold" Foreground="#034889" Margin="0 0 20 0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
-
-            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Width="198" Height="250" VerticalAlignment="Center">
-                <Grid>
-                    <Image Grid.Row="1" Source="../../Assets/Images/Badges/img_2024_af_front_badge.png" Stretch="Fill"/>
-                    <Grid Height="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 55 0 0">
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{Binding CurrentAttendee.FullName}" FontSize="10" LineHeight="10" Foreground="#034889" TextWrapping="Wrap"/>
-                            <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" FontSize="10" Foreground="#034889" TextWrapping="Wrap"/>
-                            <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" FontSize="10" Foreground="#034889" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal" Margin="0 30 0 0" HorizontalAlignment="Center">
+                                <Button Content="Cancel" Foreground="White" Background="Red" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0" Click="Btn_Cancel"/>
+                                <Button Content="EDIT" Foreground="Black" Background="Yellow" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0"/>
+                                <Button Content="PRINT" Foreground="White" Background="#009F36" FontSize="16" Padding="30 4" Cursor="Hand" Click="Btn_Print"/>
+                            </StackPanel>
                         </StackPanel>
-                    </Grid>
-                    <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.SeatNumber}" FontSize="9" Foreground="#034889" Margin="45 145 0 0"/>
-                    <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5 0 0 15">
-                        <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontSize="9" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 2 10 2" TextAlignment="Center"/>
-                    </Grid>
-                </Grid>
-            </Border>
+                    </Border>
 
-            <Button Grid.Row="2" Content="PRINT" Foreground="White" Background="#009F36" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Width="200" Height="40" Cursor="Hand" Click="Btn_Print"/>
+                    <Border Grid.Column="2" Background="#e8e8e8" CornerRadius="20" Padding="10">
+                        <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="1" Width="250" Height="Auto" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="../../Assets/Images/Badges/img_2024_glf.jpg" Height="Auto" />
+                                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Height="150" >
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding CurrentAttendee.FullName}" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" TextAlignment="Center" FontStyle="Italic" FontSize="14" TextWrapping="Wrap"/>
+                                        <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="2" VerticalAlignment="Bottom">
+                                    <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontSize="18" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+            </Border>
         </Grid>
-    </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

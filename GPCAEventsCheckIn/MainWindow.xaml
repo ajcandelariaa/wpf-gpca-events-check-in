@@ -9,7 +9,12 @@
         WindowStartupLocation="CenterScreen"
         Title="GPCA Badge Printing" Height="768" Width="1366"
         WindowState="Maximized">
-    <extToolkit:BusyIndicator IsBusy="{Binding AttendeeViewModel.IsLoading}" BusyContent="Fetching data...">
+    <extToolkit:BusyIndicator IsBusy="{Binding AttendeeViewModel.IsLoading}" BusyContent="{Binding AttendeeViewModel.LoadingMessage}">
+        <extToolkit:BusyIndicator.OverlayStyle>
+            <Style TargetType="Rectangle">
+                <Setter Property="Fill" Value="#90000000"/>
+            </Style>
+        </extToolkit:BusyIndicator.OverlayStyle>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*" />
@@ -17,8 +22,8 @@
             </Grid.RowDefinitions>
 
             <Image Grid.Row="0" Source="Assets/Images/Banners/img_2024_glf.jpg" Stretch="Fill" />
-            <ContentControl x:Name="MainContent" Content="{Binding CurrentView}" Grid.Row="1" />
-            <Grid x:Name="overlay"  Grid.RowSpan="2" Visibility="{Binding BackDropStatus}" Background="#80000000" />
+            <ContentControl x:Name="MainContent" Content="{Binding CurrentView}" Grid.Row="1" Margin="20" />
+            <Grid x:Name="overlay"  Grid.RowSpan="2" Visibility="{Binding BackDropStatus}" Background="#90000000" />
         </Grid>
     </extToolkit:BusyIndicator>
 </Window>

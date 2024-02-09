@@ -72,10 +72,6 @@ namespace GPCAEventsCheckIn.View.UserControl
         //    selectedPrinter = cbPrinterList.SelectedItem as string;
         //}
 
-        private void Btn_Return(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            _mainViewModel.ReturnBack();
-        }
 
         private void Btn_Print(object sender, RoutedEventArgs e)
         {
@@ -256,6 +252,11 @@ namespace GPCAEventsCheckIn.View.UserControl
             }
 
             return lines;
+        }
+
+        private void Btn_Cancel(object sender, RoutedEventArgs e)
+        {
+            _mainViewModel.ReturnBack();
         }
     }
 }
