@@ -12,9 +12,6 @@ using System.Windows;
 
 namespace GPCAEventsCheckIn.View.UserControl
 {
-    /// <summary>
-    /// Interaction logic for AttendeeDetailsView.xaml
-    /// </summary>
     public partial class AttendeeDetailsView
     {
         private MainViewModel _mainViewModel;
@@ -23,54 +20,23 @@ namespace GPCAEventsCheckIn.View.UserControl
         public AttendeeDetailsView(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            InitializePrinters();
+            GetDefaultPrinter();
             _mainViewModel = mainViewModel;
         }
-        void InitializePrinters()
-        {
-            //PopulatePrinterComboBox();
-            //cbPrinterList.SelectionChanged += PrinterComboBox_SelectionChanged;
-            //if (cbPrinterList.Items.Count > 0)
-            //{
-            //    cbPrinterList.SelectedIndex = 0;
-            //}
-        }
-        private void PopulatePrinterComboBox()
-        {
-            //List<string> printerList = GetPrintersList();
-            //cbPrinterList.ItemsSource = printerList;
-        }
 
-        private List<string> GetPrintersList()
+        private void GetDefaultPrinter()
         {
-            List<string> printerNames = new List<string>();
             try
             {
                 LocalPrintServer printServer = new LocalPrintServer();
                 PrintQueue defaultPrintQueue = LocalPrintServer.GetDefaultPrintQueue();
-                printerNames.Add(defaultPrintQueue.Name);
                 selectedPrinter = defaultPrintQueue.Name;
-
-                foreach (PrintQueue printer in printServer.GetPrintQueues())
-                {
-                    if (printer.Name != defaultPrintQueue.Name)
-                    {
-                        printerNames.Add(printer.Name);
-                    }
-                }
-
             }
             catch (Exception ex)
             {
-                printerNames.Add($"Error: {ex.Message}");
+                MessageBox.Show(ex.Message);
             }
-            return printerNames;
         }
-
-        //private void PrinterComboBox_SelectionChanged(object sender, RoutedEventArgs e)
-        //{
-        //    selectedPrinter = cbPrinterList.SelectedItem as string;
-        //}
 
 
         private void Btn_Print(object sender, RoutedEventArgs e)
@@ -83,29 +49,31 @@ namespace GPCAEventsCheckIn.View.UserControl
             MyFontResolver.Apply();
 
             PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
-            document.Info.Title = "Badge";
+            document.Info.Title = _mainViewModel.CurrentAttendee.FullName + " Badge";
 
             PdfSharp.Pdf.PdfPage page = document.AddPage();
-            page.Height = XUnit.FromCentimeter(13.1);
+            page.Height = XUnit.FromCentimeter(12.2);
             page.Width = XUnit.FromCentimeter(18.2);
 
-            var qrGenerator = new QRCodeGenerator();
-            var qrCodeData = qrGenerator.CreateQrCode(_mainViewModel.CurrentAttendee.TransactionId, QRCodeGenerator.ECCLevel.Q);
-            var qrCode = new QRCode(qrCodeData);
-            var qrCodeBitmap = qrCode.GetGraphic(3);
+            //THIS FOR QR CODE
+            //var qrGenerator = new QRCodeGenerator();
+            //var qrCodeData = qrGenerator.CreateQrCode(_mainViewModel.CurrentAttendee.TransactionId, QRCodeGenerator.ECCLevel.Q);
+            //var qrCode = new QRCode(qrCodeData);
+            //var qrCodeBitmap = qrCode.GetGraphic(3);
 
-            MemoryStream stream = new MemoryStream();
-            qrCodeBitmap.Save(stream, ImageFormat.Png);
-            stream.Position = 0;
-            XImage qrCodeImage = XImage.FromStream(stream);
+            //MemoryStream stream = new MemoryStream();
+            //qrCodeBitmap.Save(stream, ImageFormat.Png);
+            //stream.Position = 0;
+            //XImage qrCodeImage = XImage.FromStream(stream);
 
             string fullName = _mainViewModel.CurrentAttendee.FullName;
             string jobTitle = _mainViewModel.CurrentAttendee.JobTitle;
             string companyName = _mainViewModel.CurrentAttendee.CompanyName;
 
-            XFont fullNameFont = new XFont("Arial", 14);
+            XFont fullNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
             XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic);
             XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
+
 
             string[] completeDetails = [fullName, jobTitle, companyName];
 
@@ -132,10 +100,14 @@ namespace GPCAEventsCheckIn.View.UserControl
                         innerFont = jobTitleFont;
                         innerType = "jobTitle";
                     }
-                    else
+                    else if (i == 2)
                     {
                         innerFont = companyNameFont;
                         innerType = "companyName";
+                    } else
+                    {
+                        innerFont = fullNameFont;
+                        innerType = "others";
                     }
 
                     List<string> lines = GetLines(completeDetails[i], innerFont, 200, gfx);
@@ -155,31 +127,58 @@ namespace GPCAEventsCheckIn.View.UserControl
                     totalContentHeight += lines.Count * innerFont.GetHeight();
                 }
 
+                //yung 110 na value is height ng name details
+                XRect rect = new XRect(10, 130, 200, 110 + jobTitleMarginTop + companyMarginTop);
+                gfx.DrawRectangle(XPens.Black, rect); //just for placeholder
+
                 //So bali dito cinacalculate natin yung content height para maicenter sa rectangle height, yung +13 manual lang yan
-                XRect rect = new XRect(30, 130, 200, 110 + jobTitleMarginTop + companyMarginTop);
-                //gfx.DrawRectangle(XPens.Black, rect); just for placeholder
-
-
                 double y = (rect.Top + (rect.Height - totalContentHeight) / 2) + 13;
 
                 foreach (LineModel line in finalLines)
                 {
+                    //TEXT ALIGN LEFT
+                    //if (line.type == "companyName")
+                    //{
+                    //    gfx.DrawString(line.line, line.font, XBrushes.Black, rect.Left, y + companyMarginTop);
+                    //    y = y + line.font.GetHeight() + companyMarginTop;
+                    //} else if (line.type == "jobTitle")
+                    //{
+                    //    gfx.DrawString(line.line, line.font, XBrushes.Black, rect.Left, y + jobTitleMarginTop);
+                    //    y = y + line.font.GetHeight() + jobTitleMarginTop;
+                    //}
+                    //else
+                    //{
+                    //    gfx.DrawString(line.line, line.font, XBrushes.Black, rect.Left, y);
+                    //    y += line.font.GetHeight();
+                    //}
+
+                    //TEXT ALIGN CENTER
+                    // Calculate X-coordinate for center alignment
+                    double lineWidth = gfx.MeasureString(line.line, line.font).Width;
+                    double x = rect.Left + (rect.Width - lineWidth) / 2;
+
+                    // Draw the line
                     if (line.type == "companyName")
                     {
-                        gfx.DrawString(line.line, line.font, XBrushes.Black, rect.Left, y + companyMarginTop);
+                        gfx.DrawString(line.line, line.font, XBrushes.Black, x, y + companyMarginTop);
                         y = y + line.font.GetHeight() + companyMarginTop;
+                    } else if (line.type == "jobTitle")
+                    {
+                        gfx.DrawString(line.line, line.font, XBrushes.Black, x, y + jobTitleMarginTop);
+                        y = y + line.font.GetHeight() + jobTitleMarginTop;
                     }
                     else
                     {
-                        gfx.DrawString(line.line, line.font, XBrushes.Black, rect.Left, y);
+                        gfx.DrawString(line.line, line.font, XBrushes.Black, x, y);
                         y += line.font.GetHeight();
                     }
                 }
 
-                gfx.DrawImage(qrCodeImage, new XPoint(50, 270));
+                //FOR QR CODE 
+                //gfx.DrawImage(qrCodeImage, new XPoint(50, 270));
             }
 
-            const string filename = "HelloWorld3.pdf";
+            string filename = _mainViewModel.CurrentAttendee.TransactionId + ".pdf";
             await SavePdfDocumentAsync(document, filename);
 
             FileInfo f = new FileInfo(filename);
@@ -192,6 +191,10 @@ namespace GPCAEventsCheckIn.View.UserControl
         {
             await Task.Run(() =>
             {
+                if(File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
                 document.Save(filePath);
             });
         }

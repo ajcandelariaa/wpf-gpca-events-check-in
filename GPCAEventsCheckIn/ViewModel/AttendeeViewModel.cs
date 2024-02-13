@@ -66,7 +66,7 @@ namespace GPCAEventsCheckIn.ViewModel
 
                 ConfirmedAttendees.Clear();
 
-                var response = await _httpClient.GetStringAsync(EventModel.API);
+                var response = await _httpClient.GetStringAsync(EventModel.APIEndpoint);
                 var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
 
                 ConfirmedAttendees.Clear();
