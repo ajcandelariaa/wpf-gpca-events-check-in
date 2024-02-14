@@ -8,32 +8,46 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="QR Code Scanner" Height="500" Width="600">
+        Title="QR Code Scanner" Height="520" Width="600">
     <Grid Background="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="410"/>
             <RowDefinition Height="70" />
-            <RowDefinition Height="430"/>
         </Grid.RowDefinitions>
 
-        <Grid>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Video Capture Device:" />
-                    <ComboBox Grid.Column="1" x:Name="cbVideoCaptureDeviceList" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" SelectionChanged="cbVideoCaptureDeviceList_SelectionChanged"/>
+                    <ComboBox Grid.Column="1" x:Name="cbVideoCaptureDeviceList" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" SelectionChanged="cbVideoCaptureDeviceList_SelectionChanged"/>
                 </Grid>
-            </StackPanel>
-        </Grid>
 
         <Grid Grid.Row="1">
-            <Image Name="videoSourcePlayer" Width="600" Height="400" />
+            <Image Name="videoSourcePlayer" Stretch="Fill" />
         </Grid>
 
-        <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" 
-                Background="Transparent" Foreground="Black" BorderThickness="0" Width="50" Height="50" FontSize="30" FontFamily="Arial"
-                Click="Btn_CloseWindow" />
+        <Button Grid.Row="2" Content="Cancel" FontSize="16" Margin="0 15 0 15" HorizontalAlignment="Center" Click="Btn_Cancel" Background="#f44336" Foreground="White" Cursor="Hand">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border 
+                        x:Name="border"
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        Padding="40 10 40 10"
+                        CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#c62828"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

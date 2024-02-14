@@ -4,6 +4,28 @@
              xmlns:local="clr-namespace:GPCAEventsCheckIn"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+        </Style>
     </Application.Resources>
 </Application>

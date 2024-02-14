@@ -8,22 +8,82 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="Enter Transaction ID" Height="150" Width="600">
-    <Grid Background="#ffffff" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
+        Title="Enter Transaction ID" Height="200" Width="640">
+    <Border Padding="0 20 0 15" Background="#ffffff" VerticalAlignment="Center" CornerRadius="15">
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label Content="Enter Transaction ID:" VerticalAlignment="Center" FontSize="22"/>
-            <TextBox Width="350" Margin="5" FontSize="20" Name="Tb_transactionID"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Label Content="Enter Transaction ID:" VerticalAlignment="Center" FontSize="22" Margin="0 0 20 0"/>
+                <Border Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                    <TextBox Name="Tb_transactionID">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Width" Value="300"/>
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Padding" Value="8"/>
+                                <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#e0e0e0"/>
+                                        <Setter Property="BorderBrush" Value="#a6a6a6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Border>
+            </StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Submit" Margin="5" FontSize="16" Padding="40 15 40 15" Click="Btn_Submit" Background="#034889" Foreground="White" Cursor="Hand" />
-            <Button Content="Cancel" Margin="5" FontSize="16" Padding="40 15 40 15" Click="Btn_Cancel" Background="#f44336" Foreground="White" Cursor="Hand"/>
-        </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
+                <Button Content="Submit" Margin="0 0 20 0" FontSize="16" Click="Btn_Submit" Background="#034889" Foreground="White" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                            x:Name="border"
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Padding="40 10 40 10"
+                            CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#022c4d"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
-    </Grid>
+                <Button Content="Cancel" FontSize="16" Padding="40 10 40 10" Click="Btn_Cancel" Background="#f44336" Foreground="White" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                            x:Name="border"
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Padding="40 10 40 10"
+                            CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#c62828"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

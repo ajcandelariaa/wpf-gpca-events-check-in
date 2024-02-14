@@ -13,6 +13,7 @@
     <None Remove="Assets\Fonts\Arial\arialbd.ttf" />
     <None Remove="Assets\Fonts\Arial\arialbi.ttf" />
     <None Remove="Assets\Fonts\Arial\ariali.ttf" />
+    <None Remove="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
     <None Remove="Assets\Images\Badges\img_2024_af_front_badge.png" />
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
@@ -44,6 +45,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Fonts\Montserrat\Montserrat-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\Images\Badges\img_2024_af_front_badge.png" />
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />

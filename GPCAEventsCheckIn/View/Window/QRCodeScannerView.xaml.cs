@@ -156,7 +156,7 @@ namespace GPCAEventsCheckIn.View.Window
             }
         }
 
-        private void Btn_CloseWindow(object sender, RoutedEventArgs e)
+        private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
             if (videoSource != null && videoSource.IsRunning)
             {

@@ -26,7 +26,7 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Name:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.FullName}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.FullName}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -37,7 +37,7 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Job Title:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.JobTitle}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.JobTitle}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -48,7 +48,7 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Company Name:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.CompanyName}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.CompanyName}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -59,7 +59,7 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Badge Type:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.BadgeType}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.BadgeType}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -70,7 +70,7 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Transaction ID:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.TransactionId}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.TransactionId}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -81,14 +81,14 @@
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="Seat Number:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.SeatNumber}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.SeatNumber}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
                             <StackPanel Orientation="Horizontal" Margin="0 30 0 0" HorizontalAlignment="Center">
                                 <Button Content="Cancel" Foreground="White" Background="Red" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0" Click="Btn_Cancel"/>
-                                <Button Content="EDIT" Foreground="Black" Background="Yellow" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0"/>
-                                <Button Content="PRINT" Foreground="White" Background="#009F36" FontSize="16" Padding="30 4" Cursor="Hand" Click="Btn_Print"/>
+                                <Button Content="Edit" Foreground="Black" Background="Yellow" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0"/>
+                                <Button Content="Print" Foreground="White" Background="#009F36" FontSize="16" Padding="30 4" Cursor="Hand" Click="Btn_Print"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>
@@ -104,18 +104,18 @@
                                 <Image Grid.Row="0" Source="../../Assets/Images/Badges/img_2024_glf.jpg" Height="Auto" />
                                 <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Height="150" >
                                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding CurrentAttendee.FullName}" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
-                                        <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" TextAlignment="Center" FontStyle="Italic" FontSize="14" TextWrapping="Wrap"/>
-                                        <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding CurrentAttendee.FullName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" FontFamily="Arial" TextAlignment="Center" FontStyle="Italic" FontSize="14" TextWrapping="Wrap"/>
+                                        <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </Grid>
                                 <Grid Grid.Row="2" VerticalAlignment="Bottom">
-                                    <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontSize="18" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
+                                    <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontFamily="Arial" FontSize="16" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Border>
-            </Border>
-        </Grid>
+                    </Border>
+                </Grid>
             </Border>
         </Grid>
     </ScrollViewer>

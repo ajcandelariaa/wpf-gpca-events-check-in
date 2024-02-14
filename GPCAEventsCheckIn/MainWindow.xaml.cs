@@ -1,5 +1,6 @@
 ﻿using GPCAEventsCheckIn.ViewModel;
 using System.Windows;
+using System.Windows.Media;
 
 namespace GPCAEventsCheckIn
 {
@@ -7,7 +8,7 @@ namespace GPCAEventsCheckIn
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             DataContext = new MainViewModel();
         }
     }
