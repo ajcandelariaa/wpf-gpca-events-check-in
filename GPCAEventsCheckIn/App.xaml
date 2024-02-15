@@ -4,28 +4,15 @@
              xmlns:local="clr-namespace:GPCAEventsCheckIn"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
-        
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
-
-        <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
-
-        <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
-
-        <Style TargetType="ComboBox">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
-
-        <Style TargetType="DataGrid">
-            <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/ResourceDictionary/Button.xaml"/>
+                <ResourceDictionary Source="View/ResourceDictionary/ComboBox.xaml"/>
+                <ResourceDictionary Source="View/ResourceDictionary/DataGrid.xaml"/>
+                <ResourceDictionary Source="View/ResourceDictionary/Label.xaml"/>
+                <ResourceDictionary Source="View/ResourceDictionary/TextBlock.xaml"/>
+                <ResourceDictionary Source="View/ResourceDictionary/TextBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

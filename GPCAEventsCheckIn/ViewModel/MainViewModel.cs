@@ -8,16 +8,16 @@ namespace GPCAEventsCheckIn.ViewModel
     {
         private AttendeeViewModel _attendeeViewModel;
         private UserControl _currentView;
-        private String _previousView;
+        private string _previousView;
         private int _currentIndex;
         private AttendeeModel _currentAttendee;
-        private String _backDropStatus = "Collapsed";
+        private string _backDropStatus = "Collapsed";
         private List<AttendeeModel> _attendeeSuggesstionList;
-        private String? _selectedCompanyName;
+        private string? _selectedCompanyName;
 
 
 
-        public String? SelectedCompanyName
+        public string? SelectedCompanyName
         {
             get { return _selectedCompanyName; }
             set
@@ -37,7 +37,7 @@ namespace GPCAEventsCheckIn.ViewModel
             }
         }
 
-        public String BackDropStatus
+        public string BackDropStatus
         {
             get { return _backDropStatus; }
             set
@@ -80,7 +80,7 @@ namespace GPCAEventsCheckIn.ViewModel
             }
         }
 
-        public String PreviousView
+        public string PreviousView
         {
             get { return _previousView; }
             set

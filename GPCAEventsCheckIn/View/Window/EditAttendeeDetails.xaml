@@ -1,0 +1,140 @@
+﻿<Window x:Class="GPCAEventsCheckIn.View.Window.EditAttendeeDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GPCAEventsCheckIn.View.Window"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="Edit Attendee Details" Height="Auto" Width="640">
+    <Border Padding="20 20 20 15" Background="#ffffff" VerticalAlignment="Center" CornerRadius="15">
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Salutation:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <ComboBox Name="Cb_Salutation" Width="350"/>
+                    </Border>
+                </Grid>
+                
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="First Name:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_Fname" Width="350"/>
+                    </Border>
+                </Grid>
+
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Middle Name:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_Mname" Width="350"/>
+                    </Border>
+                </Grid>
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Last Name:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_Lname" Width="350"/>
+                    </Border>
+                </Grid>
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Job title:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_Jobtitle" Width="350"/>
+                    </Border>
+                </Grid>
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Password:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_Password" Width="350"/>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
+                <Button Content="Submit" Margin="0 0 20 0" FontSize="16" Click="Btn_Submit" Background="#034889" Foreground="White" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                x:Name="border"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="40 10 40 10"
+                                CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#022c4d"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Content="Cancel" FontSize="16" Padding="40 10 40 10" Click="Btn_Cancel" Background="#f44336" Foreground="White" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                                x:Name="border"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="40 10 40 10"
+                                CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#c62828"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

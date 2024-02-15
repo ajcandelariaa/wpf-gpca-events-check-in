@@ -16,38 +16,19 @@
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Video Capture Device:" />
-                    <ComboBox Grid.Column="1" x:Name="cbVideoCaptureDeviceList" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" SelectionChanged="cbVideoCaptureDeviceList_SelectionChanged"/>
-                </Grid>
+         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                 <ColumnDefinition/>
+             </Grid.ColumnDefinitions>
+             <Label Content="Video Capture Device:" VerticalAlignment="Center" />
+            <ComboBox Grid.Column="1" x:Name="cbVideoCaptureDeviceList" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" SelectionChanged="cbVideoCaptureDeviceList_SelectionChanged" FontSize="12"/>
+         </Grid>
 
         <Grid Grid.Row="1">
             <Image Name="videoSourcePlayer" Stretch="Fill" />
         </Grid>
 
-        <Button Grid.Row="2" Content="Cancel" FontSize="16" Margin="0 15 0 15" HorizontalAlignment="Center" Click="Btn_Cancel" Background="#f44336" Foreground="White" Cursor="Hand">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border 
-                        x:Name="border"
-                        Background="{TemplateBinding Background}" 
-                        BorderBrush="{TemplateBinding BorderBrush}" 
-                        BorderThickness="{TemplateBinding BorderThickness}" 
-                        Padding="40 10 40 10"
-                        CornerRadius="10">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#c62828"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        <Button Grid.Row="2" Margin="0 15 0 15" HorizontalAlignment="Center" Click="Btn_Cancel" Style="{StaticResource CancelButtonStyle}" />
     </Grid>
 </Window>

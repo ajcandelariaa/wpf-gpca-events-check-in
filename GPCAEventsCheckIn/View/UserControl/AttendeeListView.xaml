@@ -53,25 +53,7 @@
         <Image Source="../../Assets/Images/Common/img_return.png" Cursor="Hand" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Btn_Return"/>
 
         <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8" HorizontalAlignment="Right" VerticalAlignment="Top" >
-            <TextBox Name="textBoxName" TextChanged="Tb_Keystroke">
-                <TextBox.Style>
-                    <Style TargetType="TextBox">
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Width" Value="300"/>
-                        <Setter Property="FontSize" Value="16"/>
-                        <Setter Property="Foreground" Value="Black"/>
-                        <Setter Property="Padding" Value="8 15 8 15"/>
-                        <Setter Property="FontFamily" Value="/GPCAEventsCheckIn;component/Assets/Fonts/Montserrat/Montserrat-Regular.ttf#Montserrat" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#e0e0e0"/>
-                                <Setter Property="BorderBrush" Value="#a6a6a6"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+            <TextBox Name="textBoxName" TextChanged="Tb_Keystroke" FontSize="16" Padding="8 15 8 15" />
         </Border>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">

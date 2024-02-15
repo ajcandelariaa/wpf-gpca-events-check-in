@@ -86,9 +86,9 @@
                             </Border>
 
                             <StackPanel Orientation="Horizontal" Margin="0 30 0 0" HorizontalAlignment="Center">
-                                <Button Content="Cancel" Foreground="White" Background="Red" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0" Click="Btn_Cancel"/>
-                                <Button Content="Edit" Foreground="Black" Background="Yellow" FontSize="16" Padding="30 4" Cursor="Hand" Margin="0 0 20 0"/>
-                                <Button Content="Print" Foreground="White" Background="#009F36" FontSize="16" Padding="30 4" Cursor="Hand" Click="Btn_Print"/>
+                                <Button Style="{StaticResource CancelButtonStyle}" Margin="0 0 15 0" Click="Btn_Cancel" />
+                                <Button Style="{StaticResource EditButtonStyle}" Margin="0 0 15 0" Click="Btn_Edit" />
+                                <Button Style="{StaticResource PrintButtonStyle}" Click="Btn_Print" />
                             </StackPanel>
                         </StackPanel>
                     </Border>

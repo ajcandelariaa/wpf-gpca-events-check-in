@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Windows;
-using System.Windows.Input;
 
 namespace GPCAEventsCheckIn.ViewModel
 {
@@ -12,11 +11,11 @@ namespace GPCAEventsCheckIn.ViewModel
     {
         private readonly HttpClient _httpClient;
         private bool _isLoading;
-        private String? _loadingMessage;
+        private string? _loadingMessage;
 
         public ObservableCollection<AttendeeModel> ConfirmedAttendees { get; set; }
 
-        public String? LoadingMessage
+        public string? LoadingMessage
         {
             get { return _loadingMessage; }
             set
@@ -42,19 +41,16 @@ namespace GPCAEventsCheckIn.ViewModel
             }
         }
 
-        public ICommand RefreshCommand { get; private set; }
-
         public AttendeeViewModel()
         {
             _httpClient = new HttpClient();
             ConfirmedAttendees = new ObservableCollection<AttendeeModel>();
             LoadData();
-            RefreshCommand = new RelayCommand(ExecuteRefreshCommand);
         }
 
-        public async Task InitializeAsync()
+        public void RefreshData()
         {
-            await LoadData();
+            LoadData();
         }
 
         private async Task LoadData()
@@ -86,28 +82,5 @@ namespace GPCAEventsCheckIn.ViewModel
                 LoadingMessage = null;
             }
         }
-        private void ExecuteRefreshCommand()
-        {
-            LoadData();
-        }
-
-        public AttendeeModel? AttendeeDetails(string transactionID)
-        {
-
-            for (var i = 0; i < ConfirmedAttendees.Count; i++)
-            {
-                if (transactionID == ConfirmedAttendees[i].TransactionId)
-                {
-                    return ConfirmedAttendees[i];
-                }
-            }
-            return null;
-        }
-    }
-
-    public class ApiResponse
-    {
-        [JsonProperty("confirmedAttendees")]
-        public List<AttendeeModel> ConfirmedAttendees { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using GPCAEventsCheckIn.View.Window;
+﻿using GPCAEventsCheckIn.Model;
+using GPCAEventsCheckIn.View.Window;
 using GPCAEventsCheckIn.ViewModel;
 using System.Windows;
 
@@ -29,6 +30,11 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void SearchCategoriesClicked(object sender, RoutedEventArgs e)
         {
             _mainViewModel.NavigateToSearchCategoryView("HomeView");
+        }
+
+        private void Btn_Refresh(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _attendeeViewModel.RefreshData();
         }
     }
 }
