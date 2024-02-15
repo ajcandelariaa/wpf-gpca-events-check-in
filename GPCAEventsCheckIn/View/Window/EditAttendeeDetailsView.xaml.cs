@@ -1,13 +1,14 @@
 ﻿using GPCAEventsCheckIn.ViewModel;
+using System.Configuration;
 using System.Windows;
 
 namespace GPCAEventsCheckIn.View.Window
 {
-    public partial class EditAttendeeDetails
+    public partial class EditAttendeeDetailsView
     {
         private AttendeeViewModel _attendeeViewModel;
         private MainViewModel _mainViewModel;
-        public EditAttendeeDetails(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
+        public EditAttendeeDetailsView(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
         {
             InitializeComponent();
             _attendeeViewModel = existingAttendeeViewModel;
@@ -25,13 +26,24 @@ namespace GPCAEventsCheckIn.View.Window
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
-            Application.Current.Windows.OfType<EditAttendeeDetails>().FirstOrDefault()?.Close();
+            Application.Current.Windows.OfType<EditAttendeeDetailsView>().FirstOrDefault()?.Close();
             _mainViewModel.BackDropStatus = "Collapsed";
         }
 
-        private void Btn_Submit(object sender, RoutedEventArgs e)
+        private async void Btn_Submit(object sender, RoutedEventArgs e)
         {
+            string? salutation = Cb_Salutation.SelectedItem != null ? Cb_Salutation.SelectedItem.ToString() : string.Empty;
 
+            await _attendeeViewModel.UpdateDetails(
+                ConfigurationManager.AppSettings["ApiCode"],
+                _mainViewModel.CurrentAttendee.Id,
+                _mainViewModel.CurrentAttendee.DelegateType,
+                salutation,
+                Tb_Fname.Text,
+                Tb_Mname.Text,
+                Tb_Lname.Text,
+                Tb_Jobtitle.Text
+             );
         }
     }
 }

@@ -16,7 +16,6 @@ namespace GPCAEventsCheckIn.ViewModel
         private string? _selectedCompanyName;
 
 
-
         public string? SelectedCompanyName
         {
             get { return _selectedCompanyName; }
@@ -140,10 +139,9 @@ namespace GPCAEventsCheckIn.ViewModel
             CurrentView = new HomeView(this, AttendeeViewModel);
         }
 
-
         public MainViewModel()
         {
-            AttendeeViewModel = new AttendeeViewModel();
+            AttendeeViewModel = new AttendeeViewModel(this);
             NavigateToHomeView();
         }
     }

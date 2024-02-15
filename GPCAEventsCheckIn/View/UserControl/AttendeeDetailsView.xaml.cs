@@ -266,11 +266,11 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void Btn_Edit(object sender, RoutedEventArgs e)
         {
             _mainViewModel.BackDropStatus = "Visible";
-            EditAttendeeDetails editAttendeeDetails = new EditAttendeeDetails(_mainViewModel.AttendeeViewModel, _mainViewModel);
-            editAttendeeDetails.Owner = Application.Current.MainWindow;
-            editAttendeeDetails.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            editAttendeeDetails.Topmost = true;
-            editAttendeeDetails.ShowDialog();
+            AdminLoginDetailsView adminLoginDetailsView = new AdminLoginDetailsView(_mainViewModel);
+            adminLoginDetailsView.Owner = Application.Current.MainWindow;
+            adminLoginDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            adminLoginDetailsView.Topmost = true;
+            adminLoginDetailsView.ShowDialog();
         }
     }
 }
