@@ -17,6 +17,7 @@
     <None Remove="Assets\Images\Badges\img_2024_af_front_badge.png" />
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Common\favicon.ico" />
     <None Remove="Assets\Images\Common\img_company_name.png" />
     <None Remove="Assets\Images\Common\img_name_of_attendee.png" />
     <None Remove="Assets\Images\Common\img_placeholder.png" />
@@ -36,7 +37,6 @@
 
   <ItemGroup>
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pdfium.Net.SDK" Version="4.88.2704" />
     <PackageReference Include="PDFsharp" Version="6.0.0" />
@@ -52,6 +52,7 @@
     <Resource Include="Assets\Images\Badges\img_2024_af_front_badge.png" />
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
+    <Content Include="Assets\Images\Common\favicon.ico" />
     <Resource Include="Assets\Images\Common\img_company_name.png" />
     <Resource Include="Assets\Images\Common\img_name_of_attendee.png" />
     <Resource Include="Assets\Images\Common\img_refresh.png" />

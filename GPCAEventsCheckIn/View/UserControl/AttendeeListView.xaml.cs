@@ -7,18 +7,16 @@ namespace GPCAEventsCheckIn.View.UserControl
 {
     public partial class AttendeeListView
     {
-        private AttendeeViewModel _attendeeViewModel;
         private MainViewModel _mainViewModel;
 
-        public AttendeeListView(MainViewModel mainViewModel, AttendeeViewModel existingAttendeeViewModel)
+        public AttendeeListView(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            _attendeeViewModel = existingAttendeeViewModel;
             _mainViewModel = mainViewModel;
 
             if (_mainViewModel.SelectedCompanyName != null)
             {
-                _mainViewModel.AttendeeSuggesstionList = _attendeeViewModel.ConfirmedAttendees
+                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                     .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
@@ -41,13 +39,13 @@ namespace GPCAEventsCheckIn.View.UserControl
 
             if (_mainViewModel.SelectedCompanyName == null)
             {
-                _mainViewModel.AttendeeSuggesstionList = _attendeeViewModel.ConfirmedAttendees
+                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                     .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText))
                     .ToList();
             }
             else
             {
-                _mainViewModel.AttendeeSuggesstionList = _attendeeViewModel.ConfirmedAttendees
+                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                     .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
                     .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText))
                     .ToList();

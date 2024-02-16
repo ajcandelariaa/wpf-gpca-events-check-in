@@ -26,10 +26,10 @@ namespace GPCAEventsCheckIn.View.Window
                 Tb_Password.Text == ConfigurationManager.AppSettings["LocalPassword"])
             {
                 Application.Current.Windows.OfType<AdminLoginDetailsView>().FirstOrDefault()?.Close();
-                EditAttendeeDetailsView editAttendeeDetailsView = new EditAttendeeDetailsView(_mainViewModel.AttendeeViewModel, _mainViewModel);
+                EditAttendeeDetailsView editAttendeeDetailsView = new EditAttendeeDetailsView(_mainViewModel);
                 editAttendeeDetailsView.Owner = Application.Current.MainWindow;
                 editAttendeeDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                editAttendeeDetailsView.Topmost = true;
+                //editAttendeeDetailsView.Topmost = true;
                 editAttendeeDetailsView.ShowDialog();
             } else
             {

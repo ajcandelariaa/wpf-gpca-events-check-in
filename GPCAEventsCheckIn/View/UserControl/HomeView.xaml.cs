@@ -8,19 +8,17 @@ namespace GPCAEventsCheckIn.View.UserControl
     public partial class HomeView
     {
         private MainViewModel _mainViewModel;
-        private AttendeeViewModel _attendeeViewModel;
 
-        public HomeView(MainViewModel mainViewModel, AttendeeViewModel existingAttendeeViewModel)
+        public HomeView(MainViewModel mainViewModel)
         {
             InitializeComponent();
             _mainViewModel = mainViewModel;
-            _attendeeViewModel = existingAttendeeViewModel;
         }
 
         private void QRScannerClicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _mainViewModel.BackDropStatus = "Visible";
-            QRCodeScannerView qrScannerView = new QRCodeScannerView(_mainViewModel.AttendeeViewModel, _mainViewModel);
+            QRCodeScannerView qrScannerView = new QRCodeScannerView(_mainViewModel);
             qrScannerView.Owner = Application.Current.MainWindow;
             qrScannerView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             qrScannerView.Topmost = true;
@@ -34,7 +32,7 @@ namespace GPCAEventsCheckIn.View.UserControl
 
         private void Btn_Refresh(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            _attendeeViewModel.RefreshData();
+            _mainViewModel.AttendeeViewModel.RefreshData();
         }
     }
 }

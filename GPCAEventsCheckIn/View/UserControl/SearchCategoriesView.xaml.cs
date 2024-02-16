@@ -22,7 +22,7 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void Btn_TransactionId(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _mainViewModel.BackDropStatus = "Visible";
-            EnterTransactionIDView enterTransactionIdView = new EnterTransactionIDView(_mainViewModel.AttendeeViewModel, _mainViewModel);
+            EnterTransactionIDView enterTransactionIdView = new EnterTransactionIDView(_mainViewModel);
             enterTransactionIdView.Owner = Application.Current.MainWindow;
             enterTransactionIdView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             enterTransactionIdView.Topmost = true;
@@ -37,7 +37,7 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void Btn_CompanyName(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             _mainViewModel.BackDropStatus = "Visible";
-            SelectCompanyNameView selectCompanyNameView = new SelectCompanyNameView(_mainViewModel.AttendeeViewModel, _mainViewModel);
+            SelectCompanyNameView selectCompanyNameView = new SelectCompanyNameView(_mainViewModel);
             selectCompanyNameView.Owner = Application.Current.MainWindow;
             selectCompanyNameView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             selectCompanyNameView.Topmost = true;

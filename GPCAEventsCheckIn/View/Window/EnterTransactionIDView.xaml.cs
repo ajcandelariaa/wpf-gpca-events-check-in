@@ -5,12 +5,10 @@ namespace GPCAEventsCheckIn.View.Window
 {
     public partial class EnterTransactionIDView
     {
-        private AttendeeViewModel _attendeeViewModel;
         private MainViewModel _mainViewModel;
-        public EnterTransactionIDView(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
+        public EnterTransactionIDView(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            _attendeeViewModel = existingAttendeeViewModel;
             _mainViewModel = mainViewModel;
         }
 
@@ -23,12 +21,11 @@ namespace GPCAEventsCheckIn.View.Window
         private void Btn_Submit(object sender, RoutedEventArgs e)
         {
             int checker = 0;
-            for (int i = 0; i < _attendeeViewModel.ConfirmedAttendees.Count; i++)
+            for (int i = 0; i < _mainViewModel.AttendeeViewModel.ConfirmedAttendees.Count; i++)
             {
-                if (Tb_transactionID.Text == _attendeeViewModel.ConfirmedAttendees[i].TransactionId)
+                if (Tb_transactionID.Text == _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i].TransactionId)
                 {
-                    _mainViewModel.CurrentIndex = i;
-                    _mainViewModel.CurrentAttendee = _attendeeViewModel.ConfirmedAttendees[i];
+                    _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i];
                     checker++;
                     break;
                 }

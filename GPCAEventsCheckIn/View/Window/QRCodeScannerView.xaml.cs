@@ -12,17 +12,15 @@ namespace GPCAEventsCheckIn.View.Window
 {
     public partial class QRCodeScannerView
     {
+        private MainViewModel _mainViewModel;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
         private bool cameraStopped = false;
-        private AttendeeViewModel _attendeeViewModel;
-        private MainViewModel _mainViewModel;
 
-        public QRCodeScannerView(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
+        public QRCodeScannerView(MainViewModel mainViewModel)
         {
             InitializeComponent();
             InitializeListOfCameras();
-            _attendeeViewModel = existingAttendeeViewModel;
             _mainViewModel = mainViewModel;
         }
 
@@ -99,12 +97,11 @@ namespace GPCAEventsCheckIn.View.Window
                         if (result != null)
                         {
                             int checker = 0;
-                            for (int i = 0; i < _attendeeViewModel.ConfirmedAttendees.Count; i++)
+                            for (int i = 0; i < _mainViewModel.AttendeeViewModel.ConfirmedAttendees.Count; i++)
                             {
-                                if (result.Text == _attendeeViewModel.ConfirmedAttendees[i].TransactionId)
+                                if (result.Text == _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i].TransactionId)
                                 {
-                                    _mainViewModel.CurrentIndex = i;
-                                    _mainViewModel.CurrentAttendee = _attendeeViewModel.ConfirmedAttendees[i];
+                                    _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i];
                                     checker++;
                                     break;
                                 }

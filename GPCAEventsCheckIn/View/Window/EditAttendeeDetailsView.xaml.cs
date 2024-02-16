@@ -6,15 +6,13 @@ namespace GPCAEventsCheckIn.View.Window
 {
     public partial class EditAttendeeDetailsView
     {
-        private AttendeeViewModel _attendeeViewModel;
         private MainViewModel _mainViewModel;
-        public EditAttendeeDetailsView(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
+        public EditAttendeeDetailsView(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            _attendeeViewModel = existingAttendeeViewModel;
             _mainViewModel = mainViewModel;
 
-            List<string> salutationOptions = new List<string> { "Mr.", "Mrs.", "Ms.", "Dr.", "Eng.", "Prof." };
+            List<string> salutationOptions = new List<string> { "", "Mr.", "Mrs.", "Ms.", "Dr.", "Eng.", "Prof." };
 
             Cb_Salutation.ItemsSource = salutationOptions;
             Cb_Salutation.SelectedItem = _mainViewModel.CurrentAttendee.Salutation;
@@ -32,9 +30,13 @@ namespace GPCAEventsCheckIn.View.Window
 
         private async void Btn_Submit(object sender, RoutedEventArgs e)
         {
+            _mainViewModel.BackDropStatus = "Visible";
+            _mainViewModel.LoadingProgressStatus = "Visible";
+            _mainViewModel.LoadingProgressMessage = "Updating...";
+
             string? salutation = Cb_Salutation.SelectedItem != null ? Cb_Salutation.SelectedItem.ToString() : string.Empty;
 
-            await _attendeeViewModel.UpdateDetails(
+            await _mainViewModel.AttendeeViewModel.UpdateDetails(
                 ConfigurationManager.AppSettings["ApiCode"],
                 _mainViewModel.CurrentAttendee.Id,
                 _mainViewModel.CurrentAttendee.DelegateType,

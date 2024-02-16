@@ -9,11 +9,12 @@ namespace GPCAEventsCheckIn.ViewModel
         private AttendeeViewModel _attendeeViewModel;
         private UserControl _currentView;
         private string _previousView;
-        private int _currentIndex;
         private AttendeeModel _currentAttendee;
         private string _backDropStatus = "Collapsed";
         private List<AttendeeModel> _attendeeSuggesstionList;
         private string? _selectedCompanyName;
+        private string _loadingProgressStatus = "Collapsed";
+        private string _loadingProgressMessage = "Loading...";
 
 
         public string? SelectedCompanyName
@@ -33,6 +34,26 @@ namespace GPCAEventsCheckIn.ViewModel
             {
                 _attendeeSuggesstionList = value;
                 OnPropertyChanged(nameof(AttendeeSuggesstionList));
+            }
+        }
+
+        public string LoadingProgressMessage
+        {
+            get { return _loadingProgressMessage; }
+            set
+            {
+                _loadingProgressMessage = value;
+                OnPropertyChanged(nameof(LoadingProgressMessage));
+            }
+        }
+
+        public string LoadingProgressStatus
+        {
+            get { return _loadingProgressStatus; }
+            set
+            {
+                _loadingProgressStatus = value;
+                OnPropertyChanged(nameof(LoadingProgressStatus));
             }
         }
 
@@ -66,16 +87,6 @@ namespace GPCAEventsCheckIn.ViewModel
             {
                 _currentAttendee = value;
                 OnPropertyChanged(nameof(CurrentAttendee));
-            }
-        }
-
-        public int CurrentIndex
-        {
-            get { return _currentIndex; }
-            set
-            {
-                _currentIndex = value;
-                OnPropertyChanged(nameof(CurrentIndex));
             }
         }
 
@@ -120,7 +131,7 @@ namespace GPCAEventsCheckIn.ViewModel
         public void NavigateToAttendeeListView(string previousView)
         {
             PreviousView = previousView;
-            CurrentView = new AttendeeListView(this, AttendeeViewModel);
+            CurrentView = new AttendeeListView(this);
         }
 
         public void NavigateToSearchCategoryView(string previousView)
@@ -136,7 +147,7 @@ namespace GPCAEventsCheckIn.ViewModel
         }
         public void NavigateToHomeView()
         {
-            CurrentView = new HomeView(this, AttendeeViewModel);
+            CurrentView = new HomeView(this);
         }
 
         public MainViewModel()

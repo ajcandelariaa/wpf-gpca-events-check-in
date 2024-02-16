@@ -1,35 +1,18 @@
 ﻿using GPCAEventsCheckIn.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GPCAEventsCheckIn.View.Window
 {
-    /// <summary>
-    /// Interaction logic for SelectCompanyNameView.xaml
-    /// </summary>
     public partial class SelectCompanyNameView
     {
-        private AttendeeViewModel _attendeeViewModel;
         private MainViewModel _mainViewModel;
 
-        public SelectCompanyNameView(AttendeeViewModel existingAttendeeViewModel, MainViewModel mainViewModel)
+        public SelectCompanyNameView(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            _attendeeViewModel = existingAttendeeViewModel;
             _mainViewModel = mainViewModel;
 
-            List<string> uniqueCompanyNames = _attendeeViewModel.ConfirmedAttendees
+            List<string> uniqueCompanyNames = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
             .Select(dm => dm.CompanyName)
             .Distinct()
             .OrderBy(companyName => companyName)
