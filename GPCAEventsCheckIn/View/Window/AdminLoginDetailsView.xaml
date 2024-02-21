@@ -37,7 +37,7 @@
 
                     <Label Content="Password:" VerticalAlignment="Center" FontSize="22"/>
                     <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
-                        <TextBox Name="Tb_Password" Width="350"/>
+                        <PasswordBox Name="Pb_Password" Width="350" PasswordChar="*"/>
                     </Border>
                 </Grid>
             </StackPanel>

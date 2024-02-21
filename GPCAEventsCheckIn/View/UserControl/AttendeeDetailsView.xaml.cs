@@ -2,11 +2,14 @@
 using GPCAEventsCheckIn.Model;
 using GPCAEventsCheckIn.View.Window;
 using GPCAEventsCheckIn.ViewModel;
+using Patagames.Pdf.Net;
 using Patagames.Pdf.Net.Controls.Wpf;
 using PdfSharp.Drawing;
 using QRCoder;
 using System.Configuration;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Printing;
 using System.Reflection.Metadata;
@@ -36,9 +39,20 @@ namespace GPCAEventsCheckIn.View.UserControl
                 PrintQueue defaultPrintQueue = LocalPrintServer.GetDefaultPrintQueue();
                 selectedPrinter = defaultPrintQueue.Name;
             }
+            catch (PrintQueueException pqe)
+            {
+                // Handle print queue related exceptions (e.g., printer offline, out of paper)
+                MessageBox.Show($"PrintQueueException: {pqe.Message}");
+            }
+            catch (PrintSystemException pse)
+            {
+                // Handle print system related exceptions
+                MessageBox.Show($"PrintSystemException: {pse.Message}");
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Catch other general exceptions
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}");
             }
         }
 
@@ -58,10 +72,14 @@ namespace GPCAEventsCheckIn.View.UserControl
             try
             {
                     document.Info.Title = _mainViewModel.CurrentAttendee.FullName + " Badge";
-
+                    
                     PdfSharp.Pdf.PdfPage page = document.AddPage();
-                    page.Height = XUnit.FromCentimeter(12.2);
-                    page.Width = XUnit.FromCentimeter(18.2);
+                    page.Height = XUnit.FromMillimeter(148);
+                    page.Width = XUnit.FromMillimeter(210);
+                    page.TrimMargins.All = 0;
+
+                    var originalHeight = XUnit.FromMillimeter(123);
+                    var originalWidth = XUnit.FromMillimeter(178);
 
                     //THIS FOR QR CODE
                     //var qrGenerator = new QRCodeGenerator();
@@ -136,14 +154,20 @@ namespace GPCAEventsCheckIn.View.UserControl
                             totalContentHeight += lines.Count * innerFont.GetHeight();
                         }
 
-                        //yung 110 na value is height ng name details
-                        XRect rect = new XRect(10, 130, 200, 110 + jobTitleMarginTop + companyMarginTop);
-                        gfx.DrawRectangle(XPens.Black, rect); //just for placeholder
+                        var yPos = 170;
+                        var boxW = 255;
+                        var boxH = 148;
+
+                        XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
+                        XRect rectBack = new XRect(boxW + 10, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
+                        //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
+                        //gfx.DrawRectangle(XPens.Black, rectBack); //just for placeholder
 
                         //So bali dito cinacalculate natin yung content height para maicenter sa rectangle height, yung +13 manual lang yan
-                        double y = (rect.Top + (rect.Height - totalContentHeight) / 2) + 13;
+                        double yFront = (rectFront.Top + (rectFront.Height - totalContentHeight) / 2) + 13;
+                        double yBack = (rectBack.Top + (rectBack.Height - totalContentHeight) / 2) + 13;
 
-                        foreach (LineModel line in finalLines)
+                    foreach (LineModel line in finalLines)
                         {
                             //TEXT ALIGN LEFT
                             //if (line.type == "companyName")
@@ -164,23 +188,34 @@ namespace GPCAEventsCheckIn.View.UserControl
                             //TEXT ALIGN CENTER
                             // Calculate X-coordinate for center alignment
                             double lineWidth = gfx.MeasureString(line.line, line.font).Width;
-                            double x = rect.Left + (rect.Width - lineWidth) / 2;
+                            double xFront = rectFront.Left + (rectFront.Width - lineWidth) / 2;
+                            double xBack = rectBack.Left + (rectBack.Width - lineWidth) / 2;
 
-                            // Draw the line
-                            if (line.type == "companyName")
+                        // Draw the line
+                        if (line.type == "companyName")
                             {
-                                gfx.DrawString(line.line, line.font, XBrushes.Black, x, y + companyMarginTop);
-                                y = y + line.font.GetHeight() + companyMarginTop;
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xFront, yFront + companyMarginTop);
+                                yFront = yFront + line.font.GetHeight() + companyMarginTop;
+
+                            
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + companyMarginTop);
+                                yBack = yBack + line.font.GetHeight() + companyMarginTop;
                             }
                             else if (line.type == "jobTitle")
                             {
-                                gfx.DrawString(line.line, line.font, XBrushes.Black, x, y + jobTitleMarginTop);
-                                y = y + line.font.GetHeight() + jobTitleMarginTop;
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xFront, yFront + jobTitleMarginTop);
+                                yFront = yFront + line.font.GetHeight() + jobTitleMarginTop;
+
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + jobTitleMarginTop);
+                                yBack = yBack + line.font.GetHeight() + jobTitleMarginTop;
                             }
                             else
                             {
-                                gfx.DrawString(line.line, line.font, XBrushes.Black, x, y);
-                                y += line.font.GetHeight();
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xFront, yFront);
+                                yFront += line.font.GetHeight();
+
+                                gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack);
+                                yBack += line.font.GetHeight();
                             }
                         }
                         gfx.Dispose();
@@ -229,22 +264,27 @@ namespace GPCAEventsCheckIn.View.UserControl
             _mainViewModel.LoadingProgressMessage = "Printing badge...";
             if (File.Exists(pdfFilePath))
             {
+                Patagames.Pdf.Net.PdfCommon.Initialize(ConfigurationManager.AppSettings["PATAGAMES_KEY"]);
+                Patagames.Pdf.Net.Controls.Wpf.PdfPrintDocument pdfPrintDocument = null;
+                Patagames.Pdf.Net.PdfDocument pdfDocument = null;
                 try
                 {
-                    //PaperSize paperSize = new PaperSize("A5", (int)(5.83 * 100), (int)(8.27 * 100));
-                    Patagames.Pdf.Net.PdfDocument pdfDocument = Patagames.Pdf.Net.PdfDocument.Load(pdfFilePath);
-                    PdfPrintDocument pdfPrintDocument = new PdfPrintDocument(pdfDocument);
+                    pdfDocument = PdfDocument.Load(pdfFilePath);
+                    pdfPrintDocument = new PdfPrintDocument(pdfDocument);
+                    pdfPrintDocument.DefaultPageSettings.PaperSize = new PaperSize("A5",
+                        Convert.ToInt32(210 * 25.4),
+                        Convert.ToInt32(148 * 25.4));
                     pdfPrintDocument.PrinterSettings.PrinterName = printerName;
-                    //pdfPrintDocument.PrinterSettings.DefaultPageSettings.PaperSize = paperSize;
                     pdfPrintDocument.Print();
-                    pdfDocument.Dispose();
-                    pdfPrintDocument.Dispose();
 
-                    await _mainViewModel.AttendeeViewModel.PrintBadge(
-                        ConfigurationManager.AppSettings["ApiCode"],
-                        _mainViewModel.CurrentAttendee.Id,
-                        _mainViewModel.CurrentAttendee.DelegateType
-                     );
+                    _mainViewModel.BackDropStatus = "Collapsed";
+                    _mainViewModel.LoadingProgressStatus = "Collapsed";
+
+                    //await _mainViewModel.AttendeeViewModel.PrintBadge(
+                    //    ConfigurationManager.AppSettings["ApiCode"],
+                    //    _mainViewModel.CurrentAttendee.Id,
+                    //    _mainViewModel.CurrentAttendee.DelegateType
+                    // );
                 }
                 catch (Exception ex)
                 {
@@ -252,6 +292,11 @@ namespace GPCAEventsCheckIn.View.UserControl
                     _mainViewModel.LoadingProgressStatus = "Collapsed";
                     MessageBox.Show("Printing failed: " + ex.Message);
                     return;
+                }
+                finally
+                {
+                    pdfPrintDocument?.Dispose();
+                    pdfDocument?.Dispose();
                 }
             }
             else

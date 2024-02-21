@@ -23,7 +23,7 @@ namespace GPCAEventsCheckIn.View.Window
         private void Btn_Submit(object sender, RoutedEventArgs e)
         {
             if(Tb_Username.Text == ConfigurationManager.AppSettings["LocalUsername"] &&
-                Tb_Password.Text == ConfigurationManager.AppSettings["LocalPassword"])
+                Pb_Password.Password == ConfigurationManager.AppSettings["LocalPassword"])
             {
                 Application.Current.Windows.OfType<AdminLoginDetailsView>().FirstOrDefault()?.Close();
                 EditAttendeeDetailsView editAttendeeDetailsView = new EditAttendeeDetailsView(_mainViewModel);

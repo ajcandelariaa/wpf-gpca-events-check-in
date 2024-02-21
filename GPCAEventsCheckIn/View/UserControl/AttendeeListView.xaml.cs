@@ -35,21 +35,38 @@ namespace GPCAEventsCheckIn.View.UserControl
 
         private void Tb_Keystroke(object sender, TextChangedEventArgs e)
         {
-            string searchText = textBoxName.Text.ToLower();
+            string searchText = textBoxName.Text.ToLower().Trim();
+
+            IEnumerable<AttendeeModel> filteredList;
 
             if (_mainViewModel.SelectedCompanyName == null)
             {
-                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
-                    .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText))
-                    .ToList();
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    filteredList = Enumerable.Empty<AttendeeModel>();
+                }
+                else
+                {
+                    filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText));
+                }
             }
             else
             {
-                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
-                    .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
-                    .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText))
-                    .ToList();
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                        .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase));
+                }
+                else
+                {
+                    filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                        .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
+                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText));
+                }
             }
+
+            _mainViewModel.AttendeeSuggesstionList = filteredList.ToList();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

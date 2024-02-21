@@ -35,6 +35,9 @@ namespace GPCAEventsCheckIn.View.Window
                 Application.Current.Windows.OfType<SelectCompanyNameView>().FirstOrDefault()?.Close();
                 _mainViewModel.NavigateToAttendeeListView("SearchCategoriesView");
                 _mainViewModel.BackDropStatus = "Collapsed";
+            } else
+            {
+                MessageBox.Show("Please select your company");
             }
         }
     }

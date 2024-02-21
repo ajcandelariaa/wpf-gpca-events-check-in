@@ -20,25 +20,31 @@ namespace GPCAEventsCheckIn.View.Window
 
         private void Btn_Submit(object sender, RoutedEventArgs e)
         {
-            int checker = 0;
-            for (int i = 0; i < _mainViewModel.AttendeeViewModel.ConfirmedAttendees.Count; i++)
+            if (Tb_transactionID.Text == null || Tb_transactionID.Text.Trim() == "")
             {
-                if (Tb_transactionID.Text == _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i].TransactionId)
+                MessageBox.Show("Please enter your transaction ID");
+            } else
+            {
+                int checker = 0;
+                for (int i = 0; i < _mainViewModel.AttendeeViewModel.ConfirmedAttendees.Count; i++)
                 {
-                    _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i];
-                    checker++;
-                    break;
+                    if (Tb_transactionID.Text == _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i].TransactionId)
+                    {
+                        _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i];
+                        checker++;
+                        break;
+                    }
                 }
-            }
-            if (checker > 0)
-            {
-                _mainViewModel.NavigateToAttendeeDetailsView("SearchCategoriesView");
-                Application.Current.Windows.OfType<EnterTransactionIDView>().FirstOrDefault()?.Close();
-                _mainViewModel.BackDropStatus = "Collapsed";
-            }
-            else
-            {
-                MessageBox.Show("Invalid Transaction ID, Please try again!");
+                if (checker > 0)
+                {
+                    _mainViewModel.NavigateToAttendeeDetailsView("SearchCategoriesView");
+                    Application.Current.Windows.OfType<EnterTransactionIDView>().FirstOrDefault()?.Close();
+                    _mainViewModel.BackDropStatus = "Collapsed";
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Transaction ID, Please try again!");
+                }
             }
         }
     }
