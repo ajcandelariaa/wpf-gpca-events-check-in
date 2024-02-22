@@ -16,6 +16,21 @@ namespace GPCAEventsCheckIn.ViewModel
         private string _loadingProgressStatus = "Collapsed";
         private string _loadingProgressMessage = "Loading...";
 
+        public string EventBanner 
+        {
+            get
+            {
+                return EventModel.EventBanner;
+            }
+        }
+
+        public string BadgeBanner
+        {
+            get
+            {
+                return EventModel.BadgeBanner;
+            }
+        }
 
         public string? SelectedCompanyName
         {

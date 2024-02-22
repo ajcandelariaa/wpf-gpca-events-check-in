@@ -15,7 +15,7 @@
             <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Source="Assets/Images/Banners/img_2024_glf.jpg" Stretch="Fill" />
+        <Image Grid.Row="0" Source="{Binding EventBanner}" Stretch="Fill" />
         <ContentControl x:Name="MainContent" Content="{Binding CurrentView}" Grid.Row="1" Margin="20" />
         <Grid x:Name="overlay"  Grid.RowSpan="2" Visibility="{Binding BackDropStatus}" Background="#90000000">
             <Border x:Name="loadingOverlay" Visibility="{Binding LoadingProgressStatus}">

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:GPCAEventsCheckIn.View.UserControl"
+             xmlns:local="clr-namespace:GPCAEventsCheckIn.View.UserControl" 
+             xmlns:common="clr-namespace:GPCAEventsCheckIn.View.BadgeDesign.Common"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1366">
     
@@ -95,24 +96,7 @@
 
                     <Border Grid.Column="2" Background="#e8e8e8" CornerRadius="20" Padding="10">
                         <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="1" Width="250" Height="Auto" VerticalAlignment="Center">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Row="0" Source="../../Assets/Images/Badges/img_2024_glf.jpg" Height="Auto" />
-                                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Height="150" >
-                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding CurrentAttendee.FullName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
-                                        <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" FontFamily="Arial" TextAlignment="Center" FontStyle="Italic" FontSize="14" TextWrapping="Wrap"/>
-                                        <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid Grid.Row="2" VerticalAlignment="Bottom">
-                                    <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontFamily="Arial" FontSize="16" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
-                                </Grid>
-                            </Grid>
+                            <common:BadgeCommon />
                         </Border>
                     </Border>
                 </Grid>
