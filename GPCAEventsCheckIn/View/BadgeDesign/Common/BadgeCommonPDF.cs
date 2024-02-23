@@ -46,16 +46,16 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                 string jobTitle = _mainViewModel.CurrentAttendee.JobTitle;
                 string companyName = _mainViewModel.CurrentAttendee.CompanyName;
 
-                XFont fullNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
-                XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic);
-                XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
+                XFont fullNameFont = new XFont("Arial", 20, XFontStyleEx.Bold);
+                XFont jobTitleFont = new XFont("Arial", 16, XFontStyleEx.Italic);
+                XFont companyNameFont = new XFont("Arial", 16, XFontStyleEx.Italic);
 
 
                 string[] completeDetails = [fullName, jobTitle, companyName];
 
                 using (var gfx = XGraphics.FromPdfPage(page))
                 {
-                    int jobTitleMarginTop = 0;
+                    int jobTitleMarginTop = 10;
                     int companyMarginTop = 0;
 
                     List<LineModel> finalLines = new List<LineModel>();

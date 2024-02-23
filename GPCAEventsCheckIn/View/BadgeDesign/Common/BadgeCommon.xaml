@@ -15,9 +15,9 @@
         <Image Grid.Row="0" Source="{Binding BadgeBanner}" Height="Auto" />
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Height="150" >
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding CurrentAttendee.FullName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
-                <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" FontFamily="Arial" TextAlignment="Center" FontStyle="Italic" FontSize="14" TextWrapping="Wrap"/>
-                <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" FontFamily="Arial" TextAlignment="Center" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding CurrentAttendee.FullName}" FontFamily="Arial" TextAlignment="Center" FontSize="20" FontWeight="Bold" TextWrapping="Wrap"/>
+                <TextBlock Grid.Row="1" Text="{Binding CurrentAttendee.JobTitle}" FontFamily="Arial" TextAlignment="Center" FontStyle="Italic" FontSize="16" TextWrapping="Wrap" Margin="0 10 0 0"/>
+                <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.CompanyName}" FontFamily="Arial" TextAlignment="Center" FontSize="16" FontStyle="Italic" TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" VerticalAlignment="Bottom">

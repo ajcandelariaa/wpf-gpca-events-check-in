@@ -76,6 +76,7 @@ namespace GPCAEventsCheckIn.View.UserControl
                 AttendeeModel selectedDelegate = (AttendeeModel)MyDataGrid.SelectedItem;
                 _mainViewModel.CurrentAttendee = selectedDelegate;
                 _mainViewModel.NavigateToAttendeeDetailsView("AttendeeListView");
+                _mainViewModel.PreviousView = "AttendeeListView";
             }
         }
     }

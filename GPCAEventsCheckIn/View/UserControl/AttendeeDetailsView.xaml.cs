@@ -111,14 +111,11 @@ namespace GPCAEventsCheckIn.View.UserControl
                     pdfPrintDocument.PrinterSettings.PrinterName = printerName;
                     pdfPrintDocument.Print();
 
-                    _mainViewModel.BackDropStatus = "Collapsed";
-                    _mainViewModel.LoadingProgressStatus = "Collapsed";
-
-                    //await _mainViewModel.AttendeeViewModel.PrintBadge(
-                    //    ConfigurationManager.AppSettings["ApiCode"],
-                    //    _mainViewModel.CurrentAttendee.Id,
-                    //    _mainViewModel.CurrentAttendee.DelegateType
-                    // );
+                    await _mainViewModel.AttendeeViewModel.PrintBadge(
+                        ConfigurationManager.AppSettings["ApiCode"],
+                        _mainViewModel.CurrentAttendee.Id,
+                        _mainViewModel.CurrentAttendee.DelegateType
+                     );
                 }
                 catch (Exception ex)
                 {

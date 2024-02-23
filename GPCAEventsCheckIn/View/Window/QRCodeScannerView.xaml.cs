@@ -4,6 +4,7 @@ using GPCAEventsCheckIn.ViewModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using ZXing;
@@ -47,6 +48,8 @@ namespace GPCAEventsCheckIn.View.Window
             catch (Exception ex)
             {
                 MessageBox.Show($"Error initializing cameras: {ex.Message}");
+                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
+                _mainViewModel.BackDropStatus = "Collapsed";
             }
         }
 
@@ -66,6 +69,8 @@ namespace GPCAEventsCheckIn.View.Window
             catch (Exception ex)
             {
                 MessageBox.Show($"Error InitializeListOfCameras: {ex.Message}");
+                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
+                _mainViewModel.BackDropStatus = "Collapsed";
             }
         }
 
@@ -97,26 +102,72 @@ namespace GPCAEventsCheckIn.View.Window
                         if (result != null)
                         {
                             int checker = 0;
-                            for (int i = 0; i < _mainViewModel.AttendeeViewModel.ConfirmedAttendees.Count; i++)
+                            string qrCodeResult = result.Text;
+
+                            if (qrCodeResult != null && qrCodeResult.Length >= 4)
                             {
-                                if (result.Text == _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i].TransactionId)
+                                string firstTwoContent = qrCodeResult.Substring(0, 2);
+                                string lastTwoContent = qrCodeResult.Substring(qrCodeResult.Length - 2);
+                                string combinedContent = lastTwoContent + firstTwoContent;
+
+                                if (combinedContent != "gpca")
                                 {
-                                    _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees[i];
-                                    checker++;
-                                    break;
+                                    MessageBox.Show("Invalid QR Code. Please try again!");
                                 }
-                            }
-                            if (checker > 0)
-                            {
-                                _mainViewModel.NavigateToAttendeeDetailsView("HomeView");
-                                cameraStopped = true;
-                                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
-                                _mainViewModel.BackDropStatus = "Collapsed";
+                                else
+                                {
+                                    string encrypTextTextContent = qrCodeResult.Substring(2, qrCodeResult.Length - 4);
+
+                                    try
+                                    {
+                                        string decryptedText = DecodeBase64String(encrypTextTextContent);
+                                        string[] arrayDecryptedText = decryptedText.Split(',');
+
+                                        if (arrayDecryptedText.Length >= 5 && arrayDecryptedText[0] == "gpca@reg")
+                                        {
+                                            string delegateId = arrayDecryptedText[3];
+                                            string delegateType = arrayDecryptedText[4];
+
+                                            bool attendeeFound = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                                                .Any(attendee =>
+                                                    delegateId == attendee.Id.ToString() &&
+                                                    delegateType == attendee.DelegateType
+                                                );
+
+                                            if (attendeeFound)
+                                            {
+                                                _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                                                    .First(attendee =>
+                                                        delegateId == attendee.Id.ToString() &&
+                                                        delegateType == attendee.DelegateType
+                                                    );
+
+                                                checker++;
+
+                                                _mainViewModel.NavigateToAttendeeDetailsView("HomeView");
+                                                cameraStopped = true;
+                                                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
+                                                _mainViewModel.BackDropStatus = "Collapsed";
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Attendee not found. Please try again!");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Invalid QR Code. Please try again!");
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Invalid QR Code. Please try again!");
+                                    }
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Invalid QR Code, Please try again!");
-
+                                MessageBox.Show("Invalid QR Code. Please try again!");
                             }
                         }
                     });
@@ -132,6 +183,8 @@ namespace GPCAEventsCheckIn.View.Window
             {
                 StopCamera();
                 MessageBox.Show($"Error VideoSource_NewFrame: {ex.Message}");
+                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
+                _mainViewModel.BackDropStatus = "Collapsed";
             }
         }
 
@@ -150,6 +203,20 @@ namespace GPCAEventsCheckIn.View.Window
                 bitmapImage.EndInit();
 
                 return bitmapImage;
+            }
+        }
+
+        private static string DecodeBase64String(string base64EncodedString)
+        {
+            try
+            {
+                byte[] bytes = Convert.FromBase64String(base64EncodedString);
+                return Encoding.UTF8.GetString(bytes);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("QR Invalid" +ex);
+                return null;
             }
         }
 

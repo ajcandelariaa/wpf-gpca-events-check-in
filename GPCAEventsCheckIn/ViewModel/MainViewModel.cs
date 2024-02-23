@@ -139,30 +139,28 @@ namespace GPCAEventsCheckIn.ViewModel
             }
             else if (PreviousView == "AttendeeListView")
             {
-                NavigateToAttendeeListView("HomeView");
+                NavigateToAttendeeListView("SearchCategoriesView");
             }
         }
 
-        public void NavigateToAttendeeListView(string previousView)
+        public void NavigateToHomeView()
         {
-            PreviousView = previousView;
-            CurrentView = new AttendeeListView(this);
+            CurrentView = new HomeView(this);
         }
-
         public void NavigateToSearchCategoryView(string previousView)
         {
             PreviousView = previousView;
             CurrentView = new SearchCategoriesView(this);
         }
-
+        public void NavigateToAttendeeListView(string previousView)
+        {
+            PreviousView = previousView;
+            CurrentView = new AttendeeListView(this);
+        }
         public void NavigateToAttendeeDetailsView(String previousView)
         {
             PreviousView = previousView;
             CurrentView = new AttendeeDetailsView(this);
-        }
-        public void NavigateToHomeView()
-        {
-            CurrentView = new HomeView(this);
         }
 
         public MainViewModel()

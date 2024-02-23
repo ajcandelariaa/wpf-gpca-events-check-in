@@ -189,7 +189,7 @@ namespace GPCAEventsCheckIn.ViewModel
                 if (response.IsSuccessStatusCode)
                 {
                     _mainViewModel.LoadingProgressStatus = "Collapsed";
-                    MessageBox.Show("Badge printed successfully!");
+                    MessageBox.Show("Badge is now printing");
                     _mainViewModel.BackDropStatus = "Collapsed";
                     _mainViewModel.ReturnBack();
                 }
