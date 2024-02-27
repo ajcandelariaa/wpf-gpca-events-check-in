@@ -61,4 +61,10 @@
     <Resource Include="Assets\Images\Common\img_transaction_id.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
