@@ -1,4 +1,5 @@
 ﻿using GPCAEventsCheckIn.View.BadgeDesign.Common;
+using GPCAEventsCheckIn.View.BadgeDesign.WithQR;
 using GPCAEventsCheckIn.View.Window;
 using GPCAEventsCheckIn.ViewModel;
 using Patagames.Pdf.Net;
@@ -56,8 +57,9 @@ namespace GPCAEventsCheckIn.View.UserControl
 
         private void GeneratePdf()
         {
-            BadgeCommonPDF badgeCommonPDF = new BadgeCommonPDF(_mainViewModel);
-            var document = badgeCommonPDF.GeneratePdf();
+            //BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
+            BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
+            var document = generatedBadge.GeneratePdf();
 
             if(document != null)
             {
@@ -82,7 +84,7 @@ namespace GPCAEventsCheckIn.View.UserControl
 
                 FileInfo f = new FileInfo(filePath);
                 string pdfFilePath = f.FullName;
-                PrintPdf(pdfFilePath, selectedPrinter);
+                //PrintPdf(pdfFilePath, selectedPrinter);
             }
             catch (Exception ex)
             {
