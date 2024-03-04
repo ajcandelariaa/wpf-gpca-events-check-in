@@ -16,7 +16,9 @@
     <None Remove="Assets\Fonts\Arial\ariali.ttf" />
     <None Remove="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
     <None Remove="Assets\Images\Common\favicon.ico" />
     <None Remove="Assets\Images\Common\img_company_name.png" />
     <None Remove="Assets\Images\Common\img_name_of_attendee.png" />
@@ -50,8 +52,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
+    <Resource Include="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
     <Content Include="Assets\Images\Common\favicon.ico" />
+    <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
     <Resource Include="Assets\Images\Common\img_company_name.png" />
     <Resource Include="Assets\Images\Common\img_name_of_attendee.png" />
     <Resource Include="Assets\Images\Common\img_refresh.png" />
