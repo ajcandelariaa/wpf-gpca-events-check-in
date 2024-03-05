@@ -84,7 +84,7 @@ namespace GPCAEventsCheckIn.View.UserControl
 
                 FileInfo f = new FileInfo(filePath);
                 string pdfFilePath = f.FullName;
-                //PrintPdf(pdfFilePath, selectedPrinter);
+                PrintPdf(pdfFilePath, selectedPrinter);
             }
             catch (Exception ex)
             {

@@ -121,8 +121,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.WithQR
                     XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     XRect rectBack = new XRect(boxW + 10, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
 
-                    gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
-                    gfx.DrawRectangle(XPens.Black, rectBack); //just for placeholder
+                    //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
+                    //gfx.DrawRectangle(XPens.Black, rectBack); //just for placeholder
 
                     double yFront = (rectFront.Top + (rectFront.Height - totalContentHeight) / 2) + 13;
                     double yBack = (rectBack.Top + (rectBack.Height - totalContentHeight) / 2) + 13;
