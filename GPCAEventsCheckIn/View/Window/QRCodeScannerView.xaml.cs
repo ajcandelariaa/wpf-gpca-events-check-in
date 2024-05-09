@@ -1,6 +1,7 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
 using GPCAEventsCheckIn.ViewModel;
+using System.Configuration;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -123,35 +124,41 @@ namespace GPCAEventsCheckIn.View.Window
                                         string decryptedText = DecodeBase64String(encrypTextTextContent);
                                         string[] arrayDecryptedText = decryptedText.Split(',');
 
-                                        if (arrayDecryptedText.Length >= 5 && arrayDecryptedText[0] == "gpca@reg")
+                                        if (arrayDecryptedText.Length >= 5 && arrayDecryptedText[0] == ConfigurationManager.AppSettings["PrintingCode"])
                                         {
-                                            string delegateId = arrayDecryptedText[3];
-                                            string delegateType = arrayDecryptedText[4];
-
-                                            bool attendeeFound = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
-                                                .Any(attendee =>
-                                                    delegateId == attendee.Id.ToString() &&
-                                                    delegateType == attendee.DelegateType
-                                                );
-
-                                            if (attendeeFound)
+                                            if(arrayDecryptedText[1] == ConfigurationManager.AppSettings["EventId"] && arrayDecryptedText[2] == ConfigurationManager.AppSettings["EventCategory"])
                                             {
-                                                _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
-                                                    .First(attendee =>
+                                                string delegateId = arrayDecryptedText[3];
+                                                string delegateType = arrayDecryptedText[4];
+
+                                                bool attendeeFound = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                                                    .Any(attendee =>
                                                         delegateId == attendee.Id.ToString() &&
                                                         delegateType == attendee.DelegateType
                                                     );
 
-                                                checker++;
+                                                if (attendeeFound)
+                                                {
+                                                    _mainViewModel.CurrentAttendee = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
+                                                        .First(attendee =>
+                                                            delegateId == attendee.Id.ToString() &&
+                                                            delegateType == attendee.DelegateType
+                                                        );
 
-                                                _mainViewModel.NavigateToAttendeeDetailsView("HomeView");
-                                                cameraStopped = true;
-                                                Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
-                                                _mainViewModel.BackDropStatus = "Collapsed";
-                                            }
-                                            else
+                                                    checker++;
+
+                                                    _mainViewModel.NavigateToAttendeeDetailsView("HomeView");
+                                                    cameraStopped = true;
+                                                    Application.Current.Windows.OfType<QRCodeScannerView>().FirstOrDefault()?.Close();
+                                                    _mainViewModel.BackDropStatus = "Collapsed";
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Attendee not found. Please try again!");
+                                                }
+                                            } else
                                             {
-                                                MessageBox.Show("Attendee not found. Please try again!");
+                                                MessageBox.Show("Invalid QR Code. Please try again!");
                                             }
                                         }
                                         else

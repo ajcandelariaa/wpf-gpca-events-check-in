@@ -95,7 +95,7 @@
                     </Border>
 
                     <Border Grid.Column="2" Background="#e8e8e8" CornerRadius="20" Padding="10">
-                        <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="1" Width="250" Height="Auto" VerticalAlignment="Center">
+                        <Border Width="250" Height="Auto" VerticalAlignment="Center">
                             <common:BadgeCommon />
                         </Border>
                     </Border>

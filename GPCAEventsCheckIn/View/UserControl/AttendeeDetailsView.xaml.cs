@@ -1,4 +1,5 @@
 ﻿using GPCAEventsCheckIn.View.BadgeDesign.Common;
+using GPCAEventsCheckIn.View.BadgeDesign.PVC;
 using GPCAEventsCheckIn.View.BadgeDesign.WithQR;
 using GPCAEventsCheckIn.View.Window;
 using GPCAEventsCheckIn.ViewModel;
@@ -58,7 +59,8 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void GeneratePdf()
         {
             //BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
-            BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
+            //BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
+            BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
             var document = generatedBadge.GeneratePdf();
 
             if(document != null)
@@ -84,7 +86,7 @@ namespace GPCAEventsCheckIn.View.UserControl
 
                 FileInfo f = new FileInfo(filePath);
                 string pdfFilePath = f.FullName;
-                PrintPdf(pdfFilePath, selectedPrinter);
+                //PrintPdf(pdfFilePath, selectedPrinter);
             }
             catch (Exception ex)
             {
@@ -107,9 +109,9 @@ namespace GPCAEventsCheckIn.View.UserControl
                 {
                     pdfDocument = PdfDocument.Load(pdfFilePath);
                     pdfPrintDocument = new PdfPrintDocument(pdfDocument);
-                    pdfPrintDocument.DefaultPageSettings.PaperSize = new PaperSize("A5",
-                        Convert.ToInt32(210 * 25.4),
-                        Convert.ToInt32(148 * 25.4));
+                    //pdfPrintDocument.DefaultPageSettings.PaperSize = new PaperSize("A5",
+                    //    Convert.ToInt32(210 * 25.4),
+                    //    Convert.ToInt32(148 * 25.4));
                     pdfPrintDocument.PrinterSettings.PrinterName = printerName;
                     pdfPrintDocument.Print();
 

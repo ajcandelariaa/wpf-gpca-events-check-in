@@ -17,10 +17,14 @@
     <None Remove="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
     <None Remove="Assets\Images\Badges\img_2024_dfclw1.png" />
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Badges\img_2024_pc.png" />
     <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
+    <None Remove="Assets\Images\Badges\img_2024_scc.png" />
     <None Remove="Assets\Images\Banners\img_2024_dfclw1.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Banners\img_2024_pc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
+    <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
     <None Remove="Assets\Images\Common\favicon.ico" />
     <None Remove="Assets\Images\Common\img_company_name.png" />
     <None Remove="Assets\Images\Common\img_name_of_attendee.png" />
@@ -30,6 +34,16 @@
     <None Remove="Assets\Images\Common\img_scan_qr.png" />
     <None Remove="Assets\Images\Common\img_search.png" />
     <None Remove="Assets\Images\Common\img_transaction_id.png" />
+    <None Remove="Assets\Images\Common\PC\img_company_name.png" />
+    <None Remove="Assets\Images\Common\PC\img_name_of_attendee.png" />
+    <None Remove="Assets\Images\Common\PC\img_scan_qr.png" />
+    <None Remove="Assets\Images\Common\PC\img_search.png" />
+    <None Remove="Assets\Images\Common\PC\img_transaction_id.png" />
+    <None Remove="Assets\Images\Common\SCC\img_company_name.png" />
+    <None Remove="Assets\Images\Common\SCC\img_name_of_attendee.png" />
+    <None Remove="Assets\Images\Common\SCC\img_scan_qr.png" />
+    <None Remove="Assets\Images\Common\SCC\img_search.png" />
+    <None Remove="Assets\Images\Common\SCC\img_transaction_id.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,11 +69,15 @@
     </Content>
     <Resource Include="Assets\Images\Badges\img_2024_dfclw1.png" />
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
+    <Resource Include="Assets\Images\Badges\img_2024_pc.png" />
     <Resource Include="Assets\Images\Badges\img_2024_rccw1.jpg" />
+    <Resource Include="Assets\Images\Badges\img_2024_scc.png" />
     <Resource Include="Assets\Images\Banners\img_2024_dfclw1.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
     <Content Include="Assets\Images\Common\favicon.ico" />
+    <Resource Include="Assets\Images\Banners\img_2024_pc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
+    <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />
     <Resource Include="Assets\Images\Common\img_company_name.png" />
     <Resource Include="Assets\Images\Common\img_name_of_attendee.png" />
     <Resource Include="Assets\Images\Common\img_refresh.png" />
@@ -67,6 +85,16 @@
     <Resource Include="Assets\Images\Common\img_scan_qr.png" />
     <Resource Include="Assets\Images\Common\img_search.png" />
     <Resource Include="Assets\Images\Common\img_transaction_id.png" />
+    <Resource Include="Assets\Images\Common\PC\img_company_name.png" />
+    <Resource Include="Assets\Images\Common\PC\img_name_of_attendee.png" />
+    <Resource Include="Assets\Images\Common\PC\img_scan_qr.png" />
+    <Resource Include="Assets\Images\Common\PC\img_search.png" />
+    <Resource Include="Assets\Images\Common\PC\img_transaction_id.png" />
+    <Resource Include="Assets\Images\Common\SCC\img_company_name.png" />
+    <Resource Include="Assets\Images\Common\SCC\img_name_of_attendee.png" />
+    <Resource Include="Assets\Images\Common\SCC\img_scan_qr.png" />
+    <Resource Include="Assets\Images\Common\SCC\img_search.png" />
+    <Resource Include="Assets\Images\Common\SCC\img_transaction_id.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:GPCAEventsCheckIn.View.BadgeDesign.Common"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Height="Auto" VerticalAlignment="Top">
+    <Grid Height="Auto" VerticalAlignment="Top" Background="#ffffff">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -21,7 +21,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" VerticalAlignment="Bottom">
-            <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontFamily="Arial" FontSize="16" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
+            <TextBlock Grid.Row="2" Text="{Binding CurrentAttendee.BadgeType}" FontFamily="Arial" FontSize="14" Foreground="{Binding CurrentAttendee.FrontTextColor}" Background="{Binding CurrentAttendee.FrontTextBGColor}" Width="auto" Padding="10 5 10 5" TextAlignment="Center"/>
         </Grid>
     </Grid>
 </UserControl>
