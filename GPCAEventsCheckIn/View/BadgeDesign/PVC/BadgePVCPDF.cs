@@ -162,9 +162,9 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     double badgeTypeY = lineY + 10;
                     gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY);
 
-                    double targetWidth = 30; // Adjust as needed
-                    double targetHeight = 30; // Adjust as needed
-                    gfx.DrawImage(qrCodeImage, new XRect(220, badgeTypeY - 20, targetWidth, targetHeight));
+                    double targetWidth = 35; // Adjust as needed
+                    double targetHeight = 35; // Adjust as needed
+                    gfx.DrawImage(qrCodeImage, new XRect(205, badgeTypeY - 30, targetWidth, targetHeight));
                     //gfx.DrawImage(qrCodeImage, new XPoint(220, badgeTypeY-20));
                     gfx.Dispose();
                 }

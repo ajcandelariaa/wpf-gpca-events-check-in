@@ -4,6 +4,9 @@ namespace GPCAEventsCheckIn.Model
 {
     public class AttendeeModel
     {
+        [JsonProperty("accessType")]
+        public string AccessType { get; set; }
+
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
 
