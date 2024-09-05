@@ -53,11 +53,13 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string jobTitle = _mainViewModel.CurrentAttendee.JobTitle;
                 string companyName = _mainViewModel.CurrentAttendee.CompanyName;
                 string badgeType = _mainViewModel.CurrentAttendee.BadgeType;
+                string accessType = _mainViewModel.CurrentAttendee.AccessType;
 
                 XFont fullNameFont = new XFont("Arial", 22, XFontStyleEx.Bold);
                 XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic);
                 XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
                 XFont badgeTypeFont = new XFont("Arial", 12, XFontStyleEx.Bold);
+                XFont accessTypeFont = new XFont("Arial", 11, XFontStyleEx.Italic);
 
 
                 string[] completeDetails = [fullName, jobTitle, companyName];
@@ -161,6 +163,13 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     double badgeTypeX = rectFront.Left + (rectFront.Width - badgeTypeWidth) / 2;
                     double badgeTypeY = lineY + 10;
                     gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY);
+
+                    //Para sa access type
+                    double lineY2 = yPos + boxH + 20;
+                    double accessTypeWidth = gfx.MeasureString(accessType, accessTypeFont).Width;
+                    double accessTypeX = rectFront.Left + 15;
+                    double accessTypeY = lineY2 + 10;
+                    gfx.DrawString(accessType, accessTypeFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
 
                     double targetWidth = 35; // Adjust as needed
                     double targetHeight = 35; // Adjust as needed
