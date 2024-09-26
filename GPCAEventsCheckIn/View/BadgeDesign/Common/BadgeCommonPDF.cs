@@ -46,9 +46,9 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                 string jobTitle = _mainViewModel.CurrentAttendee.JobTitle;
                 string companyName = _mainViewModel.CurrentAttendee.CompanyName;
 
-                XFont fullNameFont = new XFont("Arial", 20, XFontStyleEx.Bold);
-                XFont jobTitleFont = new XFont("Arial", 16, XFontStyleEx.Italic);
-                XFont companyNameFont = new XFont("Arial", 16, XFontStyleEx.Italic);
+                XFont fullNameFont = new XFont("Arial", 18, XFontStyleEx.Bold);
+                XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic);
+                XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
 
 
                 string[] completeDetails = [fullName, jobTitle, companyName];
@@ -104,9 +104,20 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                         totalContentHeight += lines.Count * innerFont.GetHeight();
                     }
 
-                    var yPos = 170;
-                    var boxW = 255;
-                    var boxH = 148;
+                    //CAIPW1 2024
+                    var yPos = 242; //kung gaano kataas yung container nung details
+                    var boxW = 255; //width container
+                    var boxH = 143; //height container
+
+                    //IPAW 2024
+                    //var yPos = 259; //kung gaano kataas yung container nung details
+                    //var boxW = 255; //width container
+                    //var boxH = 120; //height container
+
+                    //GLF 2024
+                    //var yPos = 170;
+                    //var boxW = 255;
+                    //var boxH = 148;
 
                     XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     XRect rectBack = new XRect(boxW + 10, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
@@ -148,24 +159,24 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                             yFront = yFront + line.font.GetHeight() + companyMarginTop;
 
 
-                            gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + companyMarginTop);
-                            yBack = yBack + line.font.GetHeight() + companyMarginTop;
+                            //gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + companyMarginTop);
+                            //yBack = yBack + line.font.GetHeight() + companyMarginTop;
                         }
                         else if (line.type == "jobTitle")
                         {
                             gfx.DrawString(line.line, line.font, XBrushes.Black, xFront, yFront + jobTitleMarginTop);
                             yFront = yFront + line.font.GetHeight() + jobTitleMarginTop;
 
-                            gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + jobTitleMarginTop);
-                            yBack = yBack + line.font.GetHeight() + jobTitleMarginTop;
+                            //gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack + jobTitleMarginTop);
+                            //yBack = yBack + line.font.GetHeight() + jobTitleMarginTop;
                         }
                         else
                         {
                             gfx.DrawString(line.line, line.font, XBrushes.Black, xFront, yFront);
                             yFront += line.font.GetHeight();
 
-                            gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack);
-                            yBack += line.font.GetHeight();
+                            //gfx.DrawString(line.line, line.font, XBrushes.Black, xBack, yBack);
+                            //yBack += line.font.GetHeight();
                         }
                     }
                     gfx.Dispose();

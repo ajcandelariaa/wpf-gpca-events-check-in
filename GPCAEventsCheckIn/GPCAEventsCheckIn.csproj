@@ -16,14 +16,18 @@
     <None Remove="Assets\Fonts\Arial\ariali.ttf" />
     <None Remove="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
     <None Remove="Assets\Images\Badges\img_2024_anc.png" />
+    <None Remove="Assets\Images\Badges\img_2024_caipw1.png" />
     <None Remove="Assets\Images\Badges\img_2024_dfclw1.png" />
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Badges\img_2024_ipaw.png" />
     <None Remove="Assets\Images\Badges\img_2024_pc.png" />
     <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <None Remove="Assets\Images\Badges\img_2024_scc.png" />
     <None Remove="Assets\Images\Banners\img_2024_anc.jpg" />
+    <None Remove="Assets\Images\Banners\img_2024_caipw1.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_dfclw1.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
+    <None Remove="Assets\Images\Banners\img_2024_ipaw.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_pc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
     <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
@@ -75,15 +79,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\Images\Badges\img_2024_anc.png" />
+    <Resource Include="Assets\Images\Badges\img_2024_caipw1.png" />
     <Resource Include="Assets\Images\Badges\img_2024_dfclw1.png" />
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
+    <Resource Include="Assets\Images\Badges\img_2024_ipaw.png" />
     <Resource Include="Assets\Images\Badges\img_2024_pc.png" />
     <Resource Include="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <Resource Include="Assets\Images\Badges\img_2024_scc.png" />
     <Resource Include="Assets\Images\Banners\img_2024_anc.jpg" />
+    <Resource Include="Assets\Images\Banners\img_2024_caipw1.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_dfclw1.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_glf.jpg" />
     <Content Include="Assets\Images\Common\favicon.ico" />
+    <Resource Include="Assets\Images\Banners\img_2024_ipaw.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_pc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
     <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />

@@ -58,9 +58,9 @@ namespace GPCAEventsCheckIn.View.UserControl
 
         private void GeneratePdf()
         {
-            //BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
+            BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
             //BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
-            BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
+            //BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
             var document = generatedBadge.GeneratePdf();
 
             if(document != null)
