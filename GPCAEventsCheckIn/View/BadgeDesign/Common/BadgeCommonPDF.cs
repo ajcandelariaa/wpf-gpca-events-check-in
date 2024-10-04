@@ -105,9 +105,14 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                     }
 
                     //CAIPW1 2024
-                    var yPos = 242; //kung gaano kataas yung container nung details
+                    //var yPos = 242; //kung gaano kataas yung container nung details
+                    //var boxW = 255; //width container
+                    //var boxH = 143; //height container
+
+                    //IPAW 2024
+                    var yPos = 183; //kung gaano kataas yung container nung details
                     var boxW = 255; //width container
-                    var boxH = 143; //height container
+                    var boxH = 120; //height container
 
                     //IPAW 2024
                     //var yPos = 259; //kung gaano kataas yung container nung details
@@ -119,7 +124,10 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.Common
                     //var boxW = 255;
                     //var boxH = 148;
 
-                    XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
+                    XRect rectFront = new XRect(40, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
+
+                    //default
+                    //XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     XRect rectBack = new XRect(boxW + 10, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
                     //gfx.DrawRectangle(XPens.Black, rectBack); //just for placeholder
