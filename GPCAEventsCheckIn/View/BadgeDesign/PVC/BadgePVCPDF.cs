@@ -55,9 +55,12 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string badgeType = _mainViewModel.CurrentAttendee.BadgeType;
                 string accessType = _mainViewModel.CurrentAttendee.AccessType;
 
-                XFont fullNameFont = new XFont("Arial", 22, XFontStyleEx.Bold);
-                XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic);
-                XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold);
+                //XFont fullNameFont = new XFont("Arial", 22, XFontStyleEx.Bold); //ANC
+                //XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic); //ANC
+                //XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold); //ANC
+                XFont fullNameFont = new XFont("Arial", 21, XFontStyleEx.Bold); //PSC
+                XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //PSC
+                XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //PSC
                 XFont badgeTypeFont = new XFont("Arial", 12, XFontStyleEx.Bold);
                 XFont accessTypeFont = new XFont("Arial", 11, XFontStyleEx.Italic);
 
@@ -66,7 +69,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
 
                 using (var gfx = XGraphics.FromPdfPage(page))
                 {
-                    int jobTitleMarginTop = 8;
+                    //int jobTitleMarginTop = 8; // ANC
+                    int jobTitleMarginTop = 6; // PSC
                     int companyMarginTop = 2;
 
                     List<LineModel> finalLines = new List<LineModel>();
@@ -115,9 +119,15 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                         totalContentHeight += lines.Count * innerFont.GetHeight();
                     }
 
-                    var yPos = 200;
+                    //FOR ANC EVENT
+                    //var yPos = 200;
+                    //var boxW = 252;
+                    //var boxH = 148;
+
+                    //FOR PSC EVENT
+                    var yPos = 250;
                     var boxW = 252;
-                    var boxH = 148;
+                    var boxH = 100;
 
                     XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
@@ -168,12 +178,14 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     double lineY2 = yPos + boxH + 20;
                     double accessTypeWidth = gfx.MeasureString(accessType, accessTypeFont).Width;
                     double accessTypeX = rectFront.Left + 15;
-                    double accessTypeY = lineY2 + 10;
+                    double accessTypeY = lineY2 + 18; // PSC
+                    //double accessTypeY = lineY2 + 10; // ANC
                     gfx.DrawString(accessType, accessTypeFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
 
                     double targetWidth = 35; // Adjust as needed
                     double targetHeight = 35; // Adjust as needed
-                    gfx.DrawImage(qrCodeImage, new XRect(205, badgeTypeY - 30, targetWidth, targetHeight));
+                    gfx.DrawImage(qrCodeImage, new XRect(220, badgeTypeY - 30, targetWidth, targetHeight)); //PSC
+                    //gfx.DrawImage(qrCodeImage, new XRect(205, badgeTypeY - 30, targetWidth, targetHeight)); //ANC
                     //gfx.DrawImage(qrCodeImage, new XPoint(220, badgeTypeY-20));
                     gfx.Dispose();
                 }

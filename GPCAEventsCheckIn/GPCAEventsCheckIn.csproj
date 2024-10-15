@@ -21,6 +21,7 @@
     <None Remove="Assets\Images\Badges\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Badges\img_2024_ipaw.png" />
     <None Remove="Assets\Images\Badges\img_2024_pc.png" />
+    <None Remove="Assets\Images\Badges\img_2024_psc.png" />
     <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <None Remove="Assets\Images\Badges\img_2024_scc.png" />
     <None Remove="Assets\Images\Banners\img_2024_anc.jpg" />
@@ -29,6 +30,7 @@
     <None Remove="Assets\Images\Banners\img_2024_glf.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_ipaw.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_pc.jpg" />
+    <None Remove="Assets\Images\Banners\img_2024_psc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
     <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
     <None Remove="Assets\Images\Common\ANC\img_company_name.png" />
@@ -84,6 +86,7 @@
     <Resource Include="Assets\Images\Badges\img_2024_glf.jpg" />
     <Resource Include="Assets\Images\Badges\img_2024_ipaw.png" />
     <Resource Include="Assets\Images\Badges\img_2024_pc.png" />
+    <Resource Include="Assets\Images\Badges\img_2024_psc.png" />
     <Resource Include="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <Resource Include="Assets\Images\Badges\img_2024_scc.png" />
     <Resource Include="Assets\Images\Banners\img_2024_anc.jpg" />
@@ -93,6 +96,7 @@
     <Content Include="Assets\Images\Common\favicon.ico" />
     <Resource Include="Assets\Images\Banners\img_2024_ipaw.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_pc.jpg" />
+    <Resource Include="Assets\Images\Banners\img_2024_psc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
     <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />
     <Resource Include="Assets\Images\Common\ANC\img_company_name.png" />
