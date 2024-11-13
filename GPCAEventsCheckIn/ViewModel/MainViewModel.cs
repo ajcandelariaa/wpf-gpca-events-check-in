@@ -1,6 +1,8 @@
 ﻿using GPCAEventsCheckIn.Model;
 using GPCAEventsCheckIn.View.UserControl;
+using System.Configuration;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace GPCAEventsCheckIn.ViewModel
 {
@@ -166,7 +168,17 @@ namespace GPCAEventsCheckIn.ViewModel
         public MainViewModel()
         {
             AttendeeViewModel = new AttendeeViewModel(this);
-            NavigateToHomeView();
+
+            string pcName = ConfigurationManager.AppSettings["PCName"];
+            string pcNumber = ConfigurationManager.AppSettings["PCNumber"];
+
+            if(string.IsNullOrEmpty(pcName) || string.IsNullOrEmpty(pcNumber))
+            {
+                CurrentView = new InitialSetupView(this);
+            } else
+            {
+                NavigateToHomeView();
+            }
         }
     }
 }

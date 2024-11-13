@@ -9,7 +9,7 @@
 
     <UserControl.Resources>
         <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#00375D"/>
+            <Setter Property="Background" Value="#03519F"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -55,7 +55,7 @@
         <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8" HorizontalAlignment="Right" VerticalAlignment="Top" >
             <TextBox Name="textBoxName" TextChanged="Tb_Keystroke" FontSize="16" Padding="8 15 8 15" />
         </Border>
-
+        
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <DataGrid 
                 x:Name="MyDataGrid"
@@ -78,6 +78,8 @@
                     <DataGridTextColumn Header="Full Name"  Binding="{Binding FullName}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Job Title" Binding="{Binding JobTitle}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Company Name" Binding="{Binding CompanyName}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
+                    <DataGridTextColumn Header="Printed" Binding="{Binding IsPrinted}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
+                    <DataGridTextColumn Header="Print Count" Binding="{Binding PrintedCount}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -15,6 +15,7 @@
     <None Remove="Assets\Fonts\Arial\arialbi.ttf" />
     <None Remove="Assets\Fonts\Arial\ariali.ttf" />
     <None Remove="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
+    <None Remove="Assets\Images\Badges\img_2024_af.png" />
     <None Remove="Assets\Images\Badges\img_2024_anc.png" />
     <None Remove="Assets\Images\Badges\img_2024_caipw1.png" />
     <None Remove="Assets\Images\Badges\img_2024_dfclw1.png" />
@@ -24,6 +25,9 @@
     <None Remove="Assets\Images\Badges\img_2024_psc.png" />
     <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <None Remove="Assets\Images\Badges\img_2024_scc.png" />
+    <None Remove="Assets\Images\Badges\Sponsor\acwa.png" />
+    <None Remove="Assets\Images\Badges\Sponsor\reviva.png" />
+    <None Remove="Assets\Images\Banners\img_2024_af.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_anc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_caipw1.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_dfclw1.jpg" />
@@ -33,6 +37,11 @@
     <None Remove="Assets\Images\Banners\img_2024_psc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
     <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
+    <None Remove="Assets\Images\Common\AF\img_company_name.png" />
+    <None Remove="Assets\Images\Common\AF\img_name_of_attendee.png" />
+    <None Remove="Assets\Images\Common\AF\img_scan_qr.png" />
+    <None Remove="Assets\Images\Common\AF\img_search.png" />
+    <None Remove="Assets\Images\Common\AF\img_transaction_id.png" />
     <None Remove="Assets\Images\Common\ANC\img_company_name.png" />
     <None Remove="Assets\Images\Common\ANC\img_name_of_attendee.png" />
     <None Remove="Assets\Images\Common\ANC\img_scan_qr.png" />
@@ -80,6 +89,7 @@
     <Content Include="Assets\Fonts\Montserrat\Montserrat-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\Images\Badges\img_2024_af.png" />
     <Resource Include="Assets\Images\Badges\img_2024_anc.png" />
     <Resource Include="Assets\Images\Badges\img_2024_caipw1.png" />
     <Resource Include="Assets\Images\Badges\img_2024_dfclw1.png" />
@@ -89,6 +99,11 @@
     <Resource Include="Assets\Images\Badges\img_2024_psc.png" />
     <Resource Include="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <Resource Include="Assets\Images\Badges\img_2024_scc.png" />
+    <DesignDataWithDesignTimeCreatableTypes Include="Assets\Images\Badges\Sponsor\reviva.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </DesignDataWithDesignTimeCreatableTypes>
+    <Resource Include="Assets\Images\Badges\Sponsor\acwa.png" />
+    <Resource Include="Assets\Images\Banners\img_2024_af.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_anc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_caipw1.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_dfclw1.jpg" />
@@ -99,6 +114,11 @@
     <Resource Include="Assets\Images\Banners\img_2024_psc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
     <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />
+    <Resource Include="Assets\Images\Common\AF\img_company_name.png" />
+    <Resource Include="Assets\Images\Common\AF\img_name_of_attendee.png" />
+    <Resource Include="Assets\Images\Common\AF\img_scan_qr.png" />
+    <Resource Include="Assets\Images\Common\AF\img_search.png" />
+    <Resource Include="Assets\Images\Common\AF\img_transaction_id.png" />
     <Resource Include="Assets\Images\Common\ANC\img_company_name.png" />
     <Resource Include="Assets\Images\Common\ANC\img_name_of_attendee.png" />
     <Resource Include="Assets\Images\Common\ANC\img_scan_qr.png" />
@@ -121,6 +141,12 @@
     <Resource Include="Assets\Images\Common\SCC\img_scan_qr.png" />
     <Resource Include="Assets\Images\Common\SCC\img_search.png" />
     <Resource Include="Assets\Images\Common\SCC\img_transaction_id.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="View\BadgeDesign\Common\FullBadgeCommonV2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

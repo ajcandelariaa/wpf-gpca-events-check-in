@@ -22,9 +22,9 @@
         <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/img_return.png" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="ReturnButton_Click" Cursor="Hand"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" >
-            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/SCC/img_transaction_id.png" Cursor="Hand" Width="300" Height="300" Margin="0,0,30,0" MouseLeftButtonDown="Btn_TransactionId"/>
-            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/SCC/img_name_of_attendee.png" Cursor="Hand" Width="300" Height="300" Margin="0,0,30,0" MouseLeftButtonDown="Btn_NameOfAttendee"/>
-            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/SCC/img_company_name.png" Cursor="Hand" Width="300" Height="300" MouseLeftButtonDown="Btn_CompanyName" />
+            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/AF/img_transaction_id.png" Cursor="Hand" Width="300" Height="300" Margin="0,0,30,0" MouseLeftButtonDown="Btn_TransactionId"/>
+            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/AF/img_name_of_attendee.png" Cursor="Hand" Width="300" Height="300" Margin="0,0,30,0" MouseLeftButtonDown="Btn_NameOfAttendee"/>
+            <Image Source="/GPCAEventsCheckIn;component/Assets/Images/Common/AF/img_company_name.png" Cursor="Hand" Width="300" Height="300" MouseLeftButtonDown="Btn_CompanyName" />
         </StackPanel>
     </Grid>
 </UserControl>

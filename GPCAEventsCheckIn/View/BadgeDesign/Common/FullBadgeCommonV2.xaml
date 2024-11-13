@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="GPCAEventsCheckIn.View.BadgeDesign.Common.FullBadgeCommonV2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="#ffffff">
+        <!-- Image background layer -->
+        <Image Source="{Binding BadgeBanner}" Stretch="Fill" />
+
+        <!-- Centered Attendee Info and QR Code -->
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="50,0,50,60">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- Attendee's Full Name -->
+                <TextBlock Text="{Binding CurrentAttendee.FullName}" 
+                           FontFamily="Arial" 
+                           FontSize="20" 
+                           FontWeight="Bold" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Center"
+                           Foreground="Black"/>
+
+                <!-- Job Title -->
+                <TextBlock Text="{Binding CurrentAttendee.JobTitle}" 
+                           FontFamily="Arial" 
+                           FontSize="16" 
+                           FontStyle="Italic" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Center"
+                           Foreground="Black"
+                           Margin="0,5,0,0"/>
+
+                <!-- Company Name -->
+                <TextBlock Text="{Binding CurrentAttendee.CompanyName}" 
+                           FontFamily="Arial" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Center"
+                           Foreground="Black"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Vertical Line Divider and Badge Type on Left -->
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0">
+            <!-- Vertical Line -->
+            <Rectangle Width="1" Fill="Black" Height="300" VerticalAlignment="Center" />
+
+            <!-- Rotated Badge Type -->
+            <TextBlock Text="{Binding CurrentAttendee.BadgeType}"
+                       FontFamily="Arial" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       Foreground="Black"
+                       RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <RotateTransform Angle="-90"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
+
+        <!-- QR Code -->
+        <!--<Image Source="{Binding QRCodeImage}" 
+               Width="35" 
+               Height="35" 
+               VerticalAlignment="Bottom" 
+               HorizontalAlignment="Left" 
+               Margin="18,0,0,30"/>-->
+    </Grid>
+</UserControl>

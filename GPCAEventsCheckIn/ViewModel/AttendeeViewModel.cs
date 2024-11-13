@@ -63,7 +63,7 @@ namespace GPCAEventsCheckIn.ViewModel
             }
         }
 
-        public async Task UpdateDetails(string code, int delegateId, string delegateType, string? salutation, string firstName, string middleName, string lastName, string jobTitle)
+        public async Task UpdateDetails(string code, int delegateId, string delegateType, string? salutation, string firstName, string middleName, string lastName, string jobTitle, string badgeType, string seatNumber)
         {
             try
             {
@@ -77,6 +77,8 @@ namespace GPCAEventsCheckIn.ViewModel
                     Mname = middleName,
                     Lname = lastName,
                     JobTitle = jobTitle,
+                    BadgeType = badgeType,
+                    SeatNumber = seatNumber,
                 };
 
                 if (!HasChanges(existingAttendeeTemp, updatedAttendeeTemp))
@@ -98,6 +100,7 @@ namespace GPCAEventsCheckIn.ViewModel
                     {"middleName", middleName},
                     {"lastName", lastName},
                     {"jobTitle", jobTitle},
+                    {"seatNumber", seatNumber},
                     {"pcName", ConfigurationManager.AppSettings["PCName"]},
                     {"pcNumber", ConfigurationManager.AppSettings["PCNumber"]},
                     {"description", changesText}
@@ -117,6 +120,16 @@ namespace GPCAEventsCheckIn.ViewModel
                             updatedAttendee.Mname = middleName;
                             updatedAttendee.Lname = lastName;
                             updatedAttendee.JobTitle = jobTitle;
+                            updatedAttendee.BadgeType = badgeType;
+
+                            if (string.IsNullOrEmpty(seatNumber))
+                            {
+                                updatedAttendee.SeatNumber = "N/A";
+                            } else
+                            {
+                                updatedAttendee.SeatNumber = seatNumber;
+                            }
+
 
                             string tempFullName = "";
 
@@ -214,7 +227,9 @@ namespace GPCAEventsCheckIn.ViewModel
                    existingAttendee.Fname != updatedAttendee.Fname ||
                    existingAttendee.Mname != updatedAttendee.Mname ||
                    existingAttendee.Lname != updatedAttendee.Lname ||
-                   existingAttendee.JobTitle != updatedAttendee.JobTitle;
+                   existingAttendee.JobTitle != updatedAttendee.JobTitle ||
+                   existingAttendee.BadgeType != updatedAttendee.BadgeType ||
+                   existingAttendee.SeatNumber != updatedAttendee.SeatNumber;
         }
 
         private Dictionary<string, string> GetChanges(AttendeeModel existingAttendee, AttendeeModel updatedAttendee)
@@ -244,6 +259,16 @@ namespace GPCAEventsCheckIn.ViewModel
             if (existingAttendee.JobTitle != updatedAttendee.JobTitle)
             {
                 changes.Add("JobTitle", $"{existingAttendee.JobTitle} -> {updatedAttendee.JobTitle}");
+            }
+
+            if (existingAttendee.BadgeType != updatedAttendee.BadgeType)
+            {
+                changes.Add("BadgeType", $"{existingAttendee.BadgeType} -> {updatedAttendee.BadgeType}");
+            }
+
+            if (existingAttendee.SeatNumber != updatedAttendee.SeatNumber)
+            {
+                changes.Add("SeatNumber", $"{existingAttendee.SeatNumber} -> {updatedAttendee.SeatNumber}");
             }
 
             return changes;

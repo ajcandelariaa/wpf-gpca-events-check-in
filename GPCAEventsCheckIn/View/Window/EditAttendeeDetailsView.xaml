@@ -72,9 +72,33 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Job title:" VerticalAlignment="Center" FontSize="22"/>
+                    <Label Content="Job Title:" VerticalAlignment="Center" FontSize="22"/>
                     <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
                         <TextBox Name="Tb_Jobtitle" Width="350"/>
+                    </Border>
+                </Grid>
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Badge Type:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_BadgeType" Width="350"/>
+                    </Border>
+                </Grid>
+
+                <Grid Margin="0 15 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Seat Number:" VerticalAlignment="Center" FontSize="22"/>
+                    <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
+                        <TextBox Name="Tb_SeatNumber" Width="350"/>
                     </Border>
                 </Grid>
             </StackPanel>

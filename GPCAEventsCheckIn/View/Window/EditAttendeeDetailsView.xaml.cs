@@ -20,6 +20,8 @@ namespace GPCAEventsCheckIn.View.Window
             Tb_Mname.Text = _mainViewModel.CurrentAttendee.Mname;
             Tb_Lname.Text = _mainViewModel.CurrentAttendee.Lname;
             Tb_Jobtitle.Text = _mainViewModel.CurrentAttendee.JobTitle;
+            Tb_BadgeType.Text = _mainViewModel.CurrentAttendee.BadgeType;
+            Tb_SeatNumber.Text = _mainViewModel.CurrentAttendee.SeatNumber;
         }
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)
@@ -41,10 +43,12 @@ namespace GPCAEventsCheckIn.View.Window
                 _mainViewModel.CurrentAttendee.Id,
                 _mainViewModel.CurrentAttendee.DelegateType,
                 salutation,
-                Tb_Fname.Text,
-                Tb_Mname.Text,
-                Tb_Lname.Text,
-                Tb_Jobtitle.Text
+                Tb_Fname.Text.Trim(),
+                Tb_Mname.Text.Trim(),
+                Tb_Lname.Text.Trim(),
+                Tb_Jobtitle.Text.Trim(),
+                Tb_BadgeType.Text.Trim(),
+                Tb_SeatNumber.Text.Trim()
              );
         }
     }

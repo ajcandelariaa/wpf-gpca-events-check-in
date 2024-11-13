@@ -60,7 +60,8 @@ namespace GPCAEventsCheckIn.View.UserControl
         {
             //BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
             //BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
-            BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
+            //BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
+            BadgePVCPDFv2 generatedBadge = new BadgePVCPDFv2(_mainViewModel);
             var document = generatedBadge.GeneratePdf();
 
             if(document != null)
@@ -87,6 +88,8 @@ namespace GPCAEventsCheckIn.View.UserControl
                 FileInfo f = new FileInfo(filePath);
                 string pdfFilePath = f.FullName;
                 PrintPdf(pdfFilePath, selectedPrinter);
+                _mainViewModel.BackDropStatus = "Collapsed";
+                _mainViewModel.LoadingProgressStatus = "Collapsed";
             }
             catch (Exception ex)
             {
@@ -109,17 +112,15 @@ namespace GPCAEventsCheckIn.View.UserControl
                 {
                     pdfDocument = PdfDocument.Load(pdfFilePath);
                     pdfPrintDocument = new PdfPrintDocument(pdfDocument);
-                    //pdfPrintDocument.DefaultPageSettings.PaperSize = new PaperSize("A5",
-                    //    Convert.ToInt32(210 * 25.4),
-                    //    Convert.ToInt32(148 * 25.4));
+                    pdfPrintDocument.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
                     pdfPrintDocument.PrinterSettings.PrinterName = printerName;
                     pdfPrintDocument.Print();
 
-                    await _mainViewModel.AttendeeViewModel.PrintBadge(
-                        ConfigurationManager.AppSettings["ApiCode"],
-                        _mainViewModel.CurrentAttendee.Id,
-                        _mainViewModel.CurrentAttendee.DelegateType
-                     );
+                    //await _mainViewModel.AttendeeViewModel.PrintBadge(
+                    //    ConfigurationManager.AppSettings["ApiCode"],
+                    //    _mainViewModel.CurrentAttendee.Id,
+                    //    _mainViewModel.CurrentAttendee.DelegateType
+                    // );
                 }
                 catch (Exception ex)
                 {

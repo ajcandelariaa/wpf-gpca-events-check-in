@@ -13,9 +13,9 @@
             <Border Grid.Row="1" Background="#f2f2f2" CornerRadius="20">
                 <Grid Margin="20">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="10" />-->
+                        <!--<ColumnDefinition Width="5*"/>-->
                     </Grid.ColumnDefinitions>
 
                     <Border Background="#e8e8e8" CornerRadius="20" Padding="10" >
@@ -92,8 +92,8 @@
                                         <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="7*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Access Type:" FontSize="16" FontWeight="Bold" />
-                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.AccessType}" FontSize="16" TextWrapping="Wrap"/>
+                                    <TextBlock Text="Seat Number:" FontSize="16" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.SeatNumber}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
 
@@ -105,11 +105,11 @@
                         </StackPanel>
                     </Border>
 
-                    <Border Grid.Column="2" Background="#e8e8e8" CornerRadius="20" Padding="10">
+                    <!--<Border Grid.Column="2" Background="#e8e8e8" CornerRadius="20" Padding="10">
                         <Border Width="250" Height="Auto" VerticalAlignment="Center">
-                            <common:BadgeCommon />
+                            <common:FullBadgeCommonV2 />
                         </Border>
-                    </Border>
+                    </Border>-->
                 </Grid>
             </Border>
         </Grid>

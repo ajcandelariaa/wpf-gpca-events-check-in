@@ -4,8 +4,8 @@ namespace GPCAEventsCheckIn.Model
 {
     public class AttendeeModel
     {
-        [JsonProperty("accessType")]
-        public string AccessType { get; set; }
+        //[JsonProperty("accessType")]
+        //public string AccessType { get; set; }
 
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
@@ -51,6 +51,12 @@ namespace GPCAEventsCheckIn.Model
 
         [JsonProperty("seatNumber")]
         public string SeatNumber { get; set; }
+
+        [JsonProperty("isPrinted")]
+        public string IsPrinted { get; set; }
+
+        [JsonProperty("printedCount")]
+        public int PrintedCount { get; set; }
     }
 
 }
