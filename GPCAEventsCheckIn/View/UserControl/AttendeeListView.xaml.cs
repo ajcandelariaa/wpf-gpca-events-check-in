@@ -19,6 +19,9 @@ namespace GPCAEventsCheckIn.View.UserControl
                 _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                     .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
                     .ToList();
+            } else
+            {
+                _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees.ToList();
             }
         }
 
@@ -43,12 +46,14 @@ namespace GPCAEventsCheckIn.View.UserControl
             {
                 if (string.IsNullOrEmpty(searchText))
                 {
-                    filteredList = Enumerable.Empty<AttendeeModel>();
+                    //filteredList = Enumerable.Empty<AttendeeModel>();
+                    filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees;
                 }
                 else
                 {
                     filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
-                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText));
+                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText) ||
+                                               delegateItem.BadgeType.ToLower().Contains(searchText));
                 }
             }
             else
@@ -62,7 +67,8 @@ namespace GPCAEventsCheckIn.View.UserControl
                 {
                     filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                         .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
-                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText));
+                        .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText) ||
+                                               delegateItem.BadgeType.ToLower().Contains(searchText));
                 }
             }
 

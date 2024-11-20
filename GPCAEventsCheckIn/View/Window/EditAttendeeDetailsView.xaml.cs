@@ -37,18 +37,24 @@ namespace GPCAEventsCheckIn.View.Window
             _mainViewModel.LoadingProgressMessage = "Updating...";
 
             string? salutation = Cb_Salutation.SelectedItem != null ? Cb_Salutation.SelectedItem.ToString() : string.Empty;
+            string? firstName = !string.IsNullOrWhiteSpace(Tb_Fname.Text) ? Tb_Fname.Text.Trim() : null;
+            string? middleName = !string.IsNullOrWhiteSpace(Tb_Mname.Text) ? Tb_Mname.Text.Trim() : null;
+            string? lastName = !string.IsNullOrWhiteSpace(Tb_Lname.Text) ? Tb_Lname.Text.Trim() : null;
+            string? jobTitle = !string.IsNullOrWhiteSpace(Tb_Jobtitle.Text) ? Tb_Jobtitle.Text.Trim() : null;
+            string? badgeType = !string.IsNullOrWhiteSpace(Tb_BadgeType.Text) ? Tb_BadgeType.Text.Trim() : null;
+            string? seatNumber = !string.IsNullOrWhiteSpace(Tb_SeatNumber.Text) ? Tb_SeatNumber.Text.Trim() : null;
 
             await _mainViewModel.AttendeeViewModel.UpdateDetails(
                 ConfigurationManager.AppSettings["ApiCode"],
                 _mainViewModel.CurrentAttendee.Id,
                 _mainViewModel.CurrentAttendee.DelegateType,
                 salutation,
-                Tb_Fname.Text.Trim(),
-                Tb_Mname.Text.Trim(),
-                Tb_Lname.Text.Trim(),
-                Tb_Jobtitle.Text.Trim(),
-                Tb_BadgeType.Text.Trim(),
-                Tb_SeatNumber.Text.Trim()
+                firstName,
+                middleName,
+                lastName,
+                jobTitle,
+                badgeType,
+                seatNumber
              );
         }
     }

@@ -39,14 +39,34 @@ namespace GPCAEventsCheckIn.ViewModel
                 _mainViewModel.LoadingProgressStatus = "Visible";
                 _mainViewModel.LoadingProgressMessage = "Fetching data...";
 
-                ConfirmedAttendees.Clear();
+                if(ConfirmedAttendees.Count > 0)
+                {
+                    ConfirmedAttendees.Clear();
+                }
 
                 var response = await _httpClient.GetStringAsync(EventModel.APIEndpoint);
                 var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(response);
 
-                ConfirmedAttendees.Clear();
+                string isRestrictedValue = ConfigurationManager.AppSettings["IsRestrictedToDEXOnly"];
+                bool isRestricted = bool.TryParse(isRestrictedValue, out bool result) && result;
 
-                foreach (var item in apiResponse.ConfirmedAttendees)
+                var filteredAttendees = apiResponse.ConfirmedAttendees;
+
+                if (isRestricted)
+                {
+                    filteredAttendees = filteredAttendees
+                        .Where(item => item.BadgeType == "DELEGATE" || item.BadgeType == "EXHIBITOR")
+                        .OrderBy(item => item.FullName)
+                        .ToList();
+                } else
+                {
+                    filteredAttendees = filteredAttendees
+                        .OrderBy(item => item.FullName)
+                        .ToList();
+                }
+
+
+                foreach (var item in filteredAttendees)
                 {
                     ConfirmedAttendees.Add(item);
                 }
@@ -277,10 +297,17 @@ namespace GPCAEventsCheckIn.ViewModel
         private string GetChangesText(Dictionary<string, string> changes)
         {
             StringBuilder changesText = new StringBuilder();
+            int count = 0;
+            int total = changes.Count; 
 
             foreach (var change in changes)
             {
                 changesText.AppendLine($"{change.Key}: {change.Value}");
+                count++;
+                if (count < total)
+                {
+                    changesText.Append(" || ");
+                }
             }
 
             return changesText.ToString();

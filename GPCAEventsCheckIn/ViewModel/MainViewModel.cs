@@ -167,8 +167,6 @@ namespace GPCAEventsCheckIn.ViewModel
 
         public MainViewModel()
         {
-            AttendeeViewModel = new AttendeeViewModel(this);
-
             string pcName = ConfigurationManager.AppSettings["PCName"];
             string pcNumber = ConfigurationManager.AppSettings["PCNumber"];
 
@@ -177,6 +175,7 @@ namespace GPCAEventsCheckIn.ViewModel
                 CurrentView = new InitialSetupView(this);
             } else
             {
+                AttendeeViewModel = new AttendeeViewModel(this);
                 NavigateToHomeView();
             }
         }

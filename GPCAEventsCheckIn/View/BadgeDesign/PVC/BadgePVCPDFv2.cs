@@ -69,7 +69,7 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string badgeType = _mainViewModel.CurrentAttendee.BadgeType;
                 string seatNumber = _mainViewModel.CurrentAttendee.SeatNumber;
 
-                if(seatNumber == "N/A")
+                if (seatNumber == "N/A")
                 {
                     seatNumber = "";
                 }
@@ -136,7 +136,7 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     var yPos = 160;
                     var xPos = 40;
                     var boxW = 210;
-                    var boxH = 165;
+                    var boxH = 175;
 
                     XRect rectFront = new XRect(xPos, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
                     //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
@@ -172,8 +172,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
 
                     // Set up the vertical line properties
                     double lineX = xPos;  // X position of the vertical line, adjust as needed
-                    double lineStartY = yPos-20;  // Starting Y position of the vertical line
-                    double lineEndY = yPos + boxH+20;  // Ending Y position of the vertical line
+                    double lineStartY = yPos - 20;  // Starting Y position of the vertical line
+                    double lineEndY = yPos + boxH + 20;  // Ending Y position of the vertical line
 
                     // Draw the vertical line separating badge type from the details
                     gfx.DrawLine(XPens.Black, lineX, lineStartY, lineX, lineEndY);
@@ -198,14 +198,14 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     // Add QR code and other details (unchanged)
                     double targetWidth = 35; // Adjust as needed
                     double targetHeight = 35; // Adjust as needed
-                    gfx.DrawImage(qrCodeImage, new XRect(8 , yPos+boxH+23, targetWidth, targetHeight));
+                    gfx.DrawImage(qrCodeImage, new XRect(8, yPos + boxH + 23, targetWidth, targetHeight));
 
                     //ADD CUSTOM LOGO FOR ALL DELEGATES EXCEPT YOUTH FORUM & YOUTH COUNCIL
                     if (badgeType != "YOUTH FORUM" && badgeType != "YOUTH COUNCIL")
                     {
                         double targetWidth2 = 100; // Adjust as needed
-                        double targetHeight2 = 45; // Adjust as needed
-                        gfx.DrawImage(badgeSponsorLogo, new XRect(150, yPos + boxH + 25, targetWidth2, targetHeight2));
+                        double targetHeight2 = 32; // Adjust as needed
+                        gfx.DrawImage(badgeSponsorLogo, new XRect(148, yPos + boxH + 25, targetWidth2, targetHeight2));
                     }
 
                     //Para sa seat number

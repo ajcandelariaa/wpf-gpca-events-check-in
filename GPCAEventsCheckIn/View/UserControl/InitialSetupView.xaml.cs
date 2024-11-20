@@ -18,6 +18,8 @@ namespace GPCAEventsCheckIn.View.UserControl
         {
             string pcName = Tb_PcName.Text;
             string pcNumber = Tb_PcNumber.Text;
+            bool isRestricted = Cb_Restricted.IsChecked == true;
+            bool isPrintLimited = Cb_PrintLimited.IsChecked == true;
 
             if (string.IsNullOrEmpty(pcName))
             {
@@ -35,8 +37,11 @@ namespace GPCAEventsCheckIn.View.UserControl
 
             config.AppSettings.Settings.Add("PCName", pcName);
             config.AppSettings.Settings.Add("PCNumber", pcNumber);
+            config.AppSettings.Settings.Add("IsRestrictedToDEXOnly", isRestricted.ToString());
+            config.AppSettings.Settings.Add("IsPrintLimited", isPrintLimited.ToString());
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+            _mainViewModel.AttendeeViewModel = new AttendeeViewModel(_mainViewModel);
             _mainViewModel.NavigateToHomeView();
         }
     }
