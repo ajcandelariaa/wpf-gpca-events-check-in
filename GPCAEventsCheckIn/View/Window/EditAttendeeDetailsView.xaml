@@ -84,11 +84,13 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Badge Type:" VerticalAlignment="Center" FontSize="22"/>
+                    <Label Content="Badge Type: " VerticalAlignment="Center" FontSize="22"/>
                     <Border Grid.Column="1" Background="#f2f2f2" BorderBrush="#d9d9d9" BorderThickness="1" CornerRadius="8">
                         <TextBox Name="Tb_BadgeType" Width="350"/>
+                        <!--<TextBox Name="Tb_BadgeType" Width="350" PreviewTextInput="Tb_BadgeType_PreviewTextInput" TextChanged="Tb_BadgeType_TextChanged"/>-->
                     </Border>
                 </Grid>
+                <Label Content="(Please make sure to capitalize the badge type)" VerticalAlignment="Center" FontSize="16" Foreground="Red" FontStyle="Italic"/>
 
                 <Grid Margin="0 15 0 0">
                     <Grid.ColumnDefinitions>

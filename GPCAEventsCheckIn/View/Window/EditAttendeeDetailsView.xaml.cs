@@ -1,6 +1,8 @@
 ﻿using GPCAEventsCheckIn.ViewModel;
 using System.Configuration;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace GPCAEventsCheckIn.View.Window
 {
@@ -23,6 +25,36 @@ namespace GPCAEventsCheckIn.View.Window
             Tb_BadgeType.Text = _mainViewModel.CurrentAttendee.BadgeType;
             Tb_SeatNumber.Text = _mainViewModel.CurrentAttendee.SeatNumber;
         }
+
+        //private void Tb_BadgeType_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    var textBox = sender as TextBox;
+        //    if (textBox != null)
+        //    {
+        //        // Combine existing text with the new input and convert to uppercase
+        //        string newText = textBox.Text.Insert(textBox.SelectionStart, e.Text.ToUpper());
+
+        //        // Update the TextBox's text
+        //        textBox.Text = newText;
+
+        //        // Move the caret to the correct position
+        //        textBox.SelectionStart = newText.Length;
+        //        e.Handled = true; // Mark the event as handled to prevent default behavior
+        //    }
+
+        //}
+
+        //private void Tb_BadgeType_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var textBox = sender as TextBox;
+        //    if (textBox != null)
+        //    {
+        //        // Preserve the cursor position after updating the text
+        //        int selectionStart = textBox.SelectionStart;
+        //        textBox.Text = textBox.Text.ToUpper();
+        //        textBox.SelectionStart = selectionStart;
+        //    }
+        //}
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)
         {

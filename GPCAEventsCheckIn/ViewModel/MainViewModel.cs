@@ -141,7 +141,10 @@ namespace GPCAEventsCheckIn.ViewModel
             }
             else if (PreviousView == "AttendeeListView")
             {
+                PreviousView = null; //Remove this if you need to addthe scan QR
                 NavigateToAttendeeListView("SearchCategoriesView");
+                NavigateToSearchCategoryViewV2();
+
             }
         }
 
@@ -152,6 +155,10 @@ namespace GPCAEventsCheckIn.ViewModel
         public void NavigateToSearchCategoryView(string previousView)
         {
             PreviousView = previousView;
+            CurrentView = new SearchCategoriesView(this);
+        }
+        public void NavigateToSearchCategoryViewV2()
+        {
             CurrentView = new SearchCategoriesView(this);
         }
         public void NavigateToAttendeeListView(string previousView)
@@ -176,7 +183,8 @@ namespace GPCAEventsCheckIn.ViewModel
             } else
             {
                 AttendeeViewModel = new AttendeeViewModel(this);
-                NavigateToHomeView();
+                //NavigateToHomeView();
+                NavigateToSearchCategoryViewV2();
             }
         }
     }

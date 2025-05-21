@@ -35,6 +35,8 @@
             <CheckBox Grid.Column="1" Name="Cb_Restricted" Content="Print to Delegates and Exhibitors only" FontWeight="Normal" VerticalAlignment="Center" FontSize="14" Cursor="Hand" Margin="120 20 0 0"/>
 
             <CheckBox Grid.Column="1" Name="Cb_PrintLimited" Content="Only not printed badges allowed" FontWeight="Normal" VerticalAlignment="Center" FontSize="14" Cursor="Hand" Margin="120 5 0 0"/>
+
+            <CheckBox Grid.Column="1" Name="Cb_EnableLogin" Content="Require logging in for editing the delegate details" FontWeight="Normal" VerticalAlignment="Center" FontSize="14" Cursor="Hand" Margin="120 5 0 0"/>
             
             <Button Style="{StaticResource SubmitButtonStyle}" HorizontalAlignment="Center" Margin="0 20 0 0" Click="Button_Click" />
         </StackPanel>

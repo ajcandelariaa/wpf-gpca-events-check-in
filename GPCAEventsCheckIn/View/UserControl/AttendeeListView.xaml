@@ -9,7 +9,7 @@
 
     <UserControl.Resources>
         <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#03519F"/>
+            <Setter Property="Background" Value="#00375d"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -79,7 +79,7 @@
                     <DataGridTextColumn Header="Full Name"  Binding="{Binding FullName}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Job Title" Binding="{Binding JobTitle}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Company Name" Binding="{Binding CompanyName}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
-                    <DataGridTextColumn Header="Seat" Binding="{Binding SeatNumber}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
+                    <DataGridTextColumn Header="Access Type" Binding="{Binding AccessType}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Printed" Binding="{Binding IsPrinted}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                     <DataGridTextColumn Header="Print Count" Binding="{Binding PrintedCount}" Width="*" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" ElementStyle="{StaticResource ElementStyle}"/>
                 </DataGrid.Columns>

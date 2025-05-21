@@ -18,8 +18,10 @@ namespace GPCAEventsCheckIn.View.UserControl
             {
                 _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                     .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
+                    //.Take(10)
                     .ToList();
-            } else
+            }
+            else
             {
                 _mainViewModel.AttendeeSuggesstionList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees.ToList();
             }
@@ -53,7 +55,8 @@ namespace GPCAEventsCheckIn.View.UserControl
                 {
                     filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                         .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText) ||
-                                               delegateItem.BadgeType.ToLower().Contains(searchText));
+                                               delegateItem.BadgeType.ToLower().Contains(searchText) ||
+                                               delegateItem.AccessType.ToLower().Contains(searchText));
                 }
             }
             else
@@ -68,10 +71,12 @@ namespace GPCAEventsCheckIn.View.UserControl
                     filteredList = _mainViewModel.AttendeeViewModel.ConfirmedAttendees
                         .Where(delegateItem => string.Equals(delegateItem.CompanyName, _mainViewModel.SelectedCompanyName, StringComparison.OrdinalIgnoreCase))
                         .Where(delegateItem => delegateItem.FullName.ToLower().Contains(searchText) ||
-                                               delegateItem.BadgeType.ToLower().Contains(searchText));
+                                               delegateItem.BadgeType.ToLower().Contains(searchText) ||
+                                               delegateItem.AccessType.ToLower().Contains(searchText));
                 }
             }
 
+            //_mainViewModel.AttendeeSuggesstionList = filteredList.Take(10).ToList();
             _mainViewModel.AttendeeSuggesstionList = filteredList.ToList();
         }
 

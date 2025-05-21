@@ -14,10 +14,10 @@ namespace GPCAEventsCheckIn.View.UserControl
             _mainViewModel = mainViewModel;
         }
 
-        private void ReturnButton_Click(object sender, RoutedEventArgs e)
-        {
-            _mainViewModel.ReturnBack();
-        }
+        //private void ReturnButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _mainViewModel.ReturnBack();
+        //}
 
         private void Btn_TransactionId(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -42,6 +42,11 @@ namespace GPCAEventsCheckIn.View.UserControl
             selectCompanyNameView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             selectCompanyNameView.Topmost = true;
             selectCompanyNameView.ShowDialog();
+        }
+
+        private void Btn_Refresh(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _mainViewModel.AttendeeViewModel.RefreshData();
         }
     }
 }

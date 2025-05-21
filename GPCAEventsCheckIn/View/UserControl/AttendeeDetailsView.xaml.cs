@@ -75,8 +75,8 @@ namespace GPCAEventsCheckIn.View.UserControl
         {
             //BadgeCommonPDF generatedBadge = new BadgeCommonPDF(_mainViewModel);
             //BadgeWithQRPDF generatedBadge = new BadgeWithQRPDF(_mainViewModel);
-            //BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
-            BadgePVCPDFv2 generatedBadge = new BadgePVCPDFv2(_mainViewModel);
+            BadgePVCPDF generatedBadge = new BadgePVCPDF(_mainViewModel);
+            //BadgePVCPDFv2 generatedBadge = new BadgePVCPDFv2(_mainViewModel);
             var document = generatedBadge.GeneratePdf();
 
             if(document != null)
@@ -102,7 +102,7 @@ namespace GPCAEventsCheckIn.View.UserControl
 
                 FileInfo f = new FileInfo(filePath);
                 string pdfFilePath = f.FullName;
-                //PrintPdf(pdfFilePath, selectedPrinter);
+                PrintPdf(pdfFilePath, selectedPrinter);
                 _mainViewModel.BackDropStatus = "Collapsed";
                 _mainViewModel.LoadingProgressStatus = "Collapsed";
             }
@@ -131,11 +131,11 @@ namespace GPCAEventsCheckIn.View.UserControl
                     pdfPrintDocument.PrinterSettings.PrinterName = printerName;
                     pdfPrintDocument.Print();
 
-                    //await _mainViewModel.AttendeeViewModel.PrintBadge(
-                    //    ConfigurationManager.AppSettings["ApiCode"],
-                    //    _mainViewModel.CurrentAttendee.Id,
-                    //    _mainViewModel.CurrentAttendee.DelegateType
-                    // );
+                    await _mainViewModel.AttendeeViewModel.PrintBadge(
+                        ConfigurationManager.AppSettings["apicode"],
+                        _mainViewModel.CurrentAttendee.Id,
+                        _mainViewModel.CurrentAttendee.DelegateType
+                     );
                 }
                 catch (Exception ex)
                 {
@@ -167,18 +167,25 @@ namespace GPCAEventsCheckIn.View.UserControl
         private void Btn_Edit(object sender, RoutedEventArgs e)
         {
             _mainViewModel.BackDropStatus = "Visible";
-            //AdminLoginDetailsView adminLoginDetailsView = new AdminLoginDetailsView(_mainViewModel);
-            //adminLoginDetailsView.Owner = Application.Current.MainWindow;
-            //adminLoginDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            //adminLoginDetailsView.Topmost = true;
-            //adminLoginDetailsView.ShowDialog();
 
-            //DISABLED LOGGING IN
-            EditAttendeeDetailsView editAttendeeDetailsView = new EditAttendeeDetailsView(_mainViewModel);
-            editAttendeeDetailsView.Owner = Application.Current.MainWindow;
-            editAttendeeDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            editAttendeeDetailsView.Topmost = true;
-            editAttendeeDetailsView.ShowDialog();
+            string isLoginEnabledString = ConfigurationManager.AppSettings["IsLoginEnabled"];
+            bool isLoginEnabled = bool.TryParse(isLoginEnabledString, out bool result) && result;
+
+            if (isLoginEnabled)
+            {
+                AdminLoginDetailsView adminLoginDetailsView = new AdminLoginDetailsView(_mainViewModel);
+                adminLoginDetailsView.Owner = Application.Current.MainWindow;
+                adminLoginDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                adminLoginDetailsView.Topmost = true;
+                adminLoginDetailsView.ShowDialog();
+            } else
+            {
+                EditAttendeeDetailsView editAttendeeDetailsView = new EditAttendeeDetailsView(_mainViewModel);
+                editAttendeeDetailsView.Owner = Application.Current.MainWindow;
+                editAttendeeDetailsView.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                editAttendeeDetailsView.Topmost = true;
+                editAttendeeDetailsView.ShowDialog();
+            }
         }
     }
 }

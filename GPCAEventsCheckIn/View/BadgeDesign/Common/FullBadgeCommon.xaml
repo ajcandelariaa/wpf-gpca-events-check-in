@@ -11,12 +11,12 @@
         <Image Source="{Binding BadgeBanner}" Stretch="Fill" />
 
         <!-- Layer for text (overlay on top of the image) -->
-        <Grid VerticalAlignment="Bottom" Margin="5 0 5 60">
+        <Grid VerticalAlignment="Bottom" Margin="5 0 5 85">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="{Binding CurrentAttendee.FullName}" 
                            FontFamily="Arial" 
                            TextAlignment="Center" 
-                           FontSize="20" 
+                           FontSize="16" 
                            FontWeight="Bold" 
                            TextWrapping="Wrap" 
                            Padding="0 10 10 0"
@@ -25,14 +25,14 @@
                            FontFamily="Arial" 
                            TextAlignment="Center" 
                            FontStyle="Italic" 
-                           FontSize="16" 
+                           FontSize="12" 
                            TextWrapping="Wrap" 
                            Margin="0 10 0 0" 
                            Foreground="Black"/>
                 <TextBlock Text="{Binding CurrentAttendee.CompanyName}" 
                            FontFamily="Arial" 
                            TextAlignment="Center" 
-                           FontSize="16" 
+                           FontSize="12" 
                            FontWeight="Bold" 
                            TextWrapping="Wrap" 
                            Foreground="Black"/>
@@ -40,13 +40,26 @@
         </Grid>
 
         <!-- Badge Type and Colors (bottom layer) -->
-        <Grid VerticalAlignment="Bottom">
+        <Grid VerticalAlignment="Bottom" >
             <TextBlock Text="{Binding CurrentAttendee.BadgeType}" 
                        FontFamily="Arial" 
-                       FontSize="14" 
+                       FontSize="12" 
                        Foreground="Black"
                        Padding="10 5 10 5" 
                        FontWeight="Bold" 
+                       Margin="0 0 0 35"
+                       TextAlignment="Center"/>
+        </Grid>
+
+        <!-- Badge Type and Colors (bottom layer) -->
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <TextBlock Text="{Binding CurrentAttendee.AccessType}" 
+                       FontFamily="Arial" 
+                       FontSize="12" 
+                       Foreground="Black"
+                       Padding="10 5 10 5" 
+                       FontWeight="Bold" 
+                       Margin="0 0 20 5"
                        TextAlignment="Center"/>
         </Grid>
     </Grid>

@@ -208,7 +208,7 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                         gfx.DrawImage(badgeSponsorLogo, new XRect(148, yPos + boxH + 25, targetWidth2, targetHeight2));
                     }
 
-                    //Para sa seat number
+                    ////Para sa seat number
                     double lineY2 = yPos + boxH + 20;
                     double accessTypeWidth = gfx.MeasureString(seatNumber, seatNumberFont).Width;
                     double accessTypeX = rectFront.Left + 5;
