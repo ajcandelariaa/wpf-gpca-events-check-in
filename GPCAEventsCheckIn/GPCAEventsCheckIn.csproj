@@ -25,6 +25,7 @@
     <None Remove="Assets\Images\Badges\img_2024_psc.png" />
     <None Remove="Assets\Images\Badges\img_2024_rccw1.jpg" />
     <None Remove="Assets\Images\Badges\img_2024_scc.png" />
+    <None Remove="Assets\Images\Badges\img_2025_anc.png" />
     <None Remove="Assets\Images\Badges\img_2025_pc.jpg" />
     <None Remove="Assets\Images\Badges\img_2025_scc.jpg" />
     <None Remove="Assets\Images\Badges\Sponsor\acwa.png" />
@@ -40,6 +41,7 @@
     <None Remove="Assets\Images\Banners\img_2024_psc.jpg" />
     <None Remove="Assets\Images\Banners\img_2024_rccw1.png" />
     <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
+    <None Remove="Assets\Images\Banners\img_2025_anc.jpg" />
     <None Remove="Assets\Images\Banners\img_2025_pc.jpg" />
     <None Remove="Assets\Images\Banners\img_2025_scc.jpg" />
     <None Remove="Assets\Images\Common\AF\img_company_name.png" />
@@ -107,6 +109,7 @@
     <DesignDataWithDesignTimeCreatableTypes Include="Assets\Images\Badges\Sponsor\reviva.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </DesignDataWithDesignTimeCreatableTypes>
+    <Resource Include="Assets\Images\Badges\img_2025_anc.png" />
     <Resource Include="Assets\Images\Badges\img_2025_pc.jpg" />
     <Resource Include="Assets\Images\Badges\img_2025_scc.jpg" />
     <Resource Include="Assets\Images\Badges\Sponsor\acwa.png" />
@@ -122,6 +125,7 @@
     <Resource Include="Assets\Images\Banners\img_2024_psc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2024_rccw1.png" />
     <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />
+    <Resource Include="Assets\Images\Banners\img_2025_anc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2025_pc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2025_scc.jpg" />
     <Resource Include="Assets\Images\Common\AF\img_company_name.png" />

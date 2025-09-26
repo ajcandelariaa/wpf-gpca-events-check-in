@@ -7,8 +7,8 @@ namespace GPCAEventsCheckIn.Model
         public static string EventCategory = ConfigurationManager.AppSettings["EventCategory"];
         public static string EventYear = ConfigurationManager.AppSettings["EventYear"];
         public static string ApiUrl = ConfigurationManager.AppSettings["ApiUrl"];
-        public static string EventBanner = "/GPCAEventsCheckIn;component/Assets/Images/Banners/img_2025_scc.jpg";
-        public static string BadgeBanner = "/GPCAEventsCheckIn;component/Assets/Images/Badges/img_2025_scc.jpg";
+        public static string EventBanner = "/GPCAEventsCheckIn;component/Assets/Images/Banners/img_2025_anc.jpg";
+        public static string BadgeBanner = "/GPCAEventsCheckIn;component/Assets/Images/Badges/img_2025_anc.png";
 
         public static string APIEndpoint { get; set; }
 

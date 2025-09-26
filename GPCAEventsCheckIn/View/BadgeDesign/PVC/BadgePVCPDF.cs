@@ -51,7 +51,7 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 XImage qrCodeImage = XImage.FromStream(stream);
 
                 //FOR LOGO
-                //Uri imageUri = new Uri("pack://application:,,,/GPCAEventsCheckIn;component/Assets/Images/Badges/Sponsor/sabic.png", UriKind.Absolute);
+                //Uri imageUri = new Uri("pack://application:,,,/GPCAEventsCheckInForAdmin;component/Assets/Images/Sponsor/sabic.png", UriKind.Absolute);
                 //BitmapImage bitmap = new BitmapImage(imageUri);
                 //XImage badgeSponsorLogo;
                 //using (MemoryStream ms = new MemoryStream())
@@ -70,15 +70,15 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string accessType = _mainViewModel.CurrentAttendee.AccessType;
                 //string accessType = "";
 
-                //XFont fullNameFont = new XFont("Arial", 22, XFontStyleEx.Bold); //ANC & PC
-                //XFont jobTitleFont = new XFont("Arial", 14, XFontStyleEx.Italic); //ANC & PC
-                //XFont companyNameFont = new XFont("Arial", 14, XFontStyleEx.Bold); //ANC & PC
+                XFont fullNameFont = new XFont("Arial", 21, XFontStyleEx.Bold); //ANC & PC
+                XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //ANC & PC
+                XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //ANC & PC
                 //XFont fullNameFont = new XFont("Arial", 21, XFontStyleEx.Bold); //PSC 
                 //XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //PSC
                 //XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //PSC
-                XFont fullNameFont = new XFont("Arial", 18, XFontStyleEx.Bold); //SCC
-                XFont jobTitleFont = new XFont("Arial", 11, XFontStyleEx.Italic); //SCC
-                XFont companyNameFont = new XFont("Arial", 11, XFontStyleEx.Bold); //SCC
+                //XFont fullNameFont = new XFont("Arial", 18, XFontStyleEx.Bold); //SCC
+                //XFont jobTitleFont = new XFont("Arial", 11, XFontStyleEx.Italic); //SCC
+                //XFont companyNameFont = new XFont("Arial", 11, XFontStyleEx.Bold); //SCC
                 XFont badgeTypeFont = new XFont("Arial", 11, XFontStyleEx.Bold);
                 //XFont sponsorTextFont = new XFont("Arial", 7, XFontStyleEx.Bold);
                 XFont accessTypeFont = new XFont("Arial", 9, XFontStyleEx.Italic);
@@ -88,8 +88,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
 
                 using (var gfx = XGraphics.FromPdfPage(page))
                 {
-                    //int jobTitleMarginTop = 8; // ANC & PC
-                    int jobTitleMarginTop = 0; // PSC & SCC
+                    int jobTitleMarginTop = 8; // ANC & PC
+                    //int jobTitleMarginTop = 0; // PSC & SCC
                     int companyMarginTop = 2;
 
                     List<LineModel> finalLines = new List<LineModel>();
@@ -139,9 +139,9 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     }
 
                     //FOR SCC EVENT
-                    var yPos = 230;
-                    var boxW = 252;
-                    var boxH = 120;
+                    //var yPos = 230;
+                    //var boxW = 252;
+                    //var boxH = 120;
 
                     ////FOR PC EVENT
                     //var yPos = 217;
@@ -149,9 +149,9 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     //var boxH = 130;
 
                     //FOR ANC EVENT
-                    //var yPos = 200;
-                    //var boxW = 252;
-                    //var boxH = 148;
+                    var yPos = 210;
+                    var boxW = 252;
+                    var boxH = 135;
 
                     //FOR PSC EVENT
                     //var yPos = 250;
@@ -206,35 +206,35 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     //double lineEndX = 252;
                     //double lineEndY = yPos + boxH + 20;
                     //gfx.DrawLine(XPens.Black, lineStartX, lineStartY, lineEndX, lineEndY);
-                       
+
                     double lineY = yPos + boxH + 28;
                     double badgeTypeWidth = gfx.MeasureString(badgeType, badgeTypeFont).Width;
                     double badgeTypeX = rectFront.Left + (rectFront.Width - badgeTypeWidth) / 2;
-                    //double badgeTypeY = lineY + 10;  //PC
-                    double badgeTypeY = lineY - 10;  //SCC
-                    gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY + 5); // SCC
-                    //gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY);
+                    double badgeTypeY = lineY + 10;  //ANC & PC 
+                    //double badgeTypeY = lineY - 10;  //SCC
+                    //gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY + 5); // SCC
+                    gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY); //ANC
 
                     //Para sa access type
-                    //double lineY2 = yPos + boxH + 20; //PC
-                    double lineY2 = yPos + boxH; //SCC
+                    double lineY2 = yPos + boxH + 20; //ANC & PC
+                    //double lineY2 = yPos + boxH; //SCC
                     double accessTypeWidth = gfx.MeasureString(accessType, accessTypeFont).Width;
-                    double accessTypeX = 190; //SCC
-                    //double accessTypeX = rectFront.Left + 15; //PC
-                    double accessTypeY = lineY2 + 42; // SCC
+                    //double accessTypeX = 190; //SCC
+                    double accessTypeX = rectFront.Left + 15; //ANC && PC
+                    //double accessTypeY = lineY2 + 42; // SCC
                     //double accessTypeY = lineY2 + 18; // PSC
-                    //double accessTypeY = lineY2 + 10; // ANC
+                    double accessTypeY = lineY2 + 15; // ANC
                     gfx.DrawString(accessType, accessTypeFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
 
                     //Para sa QR Code
                     double targetWidth = 35; // Adjust as needed
                     double targetHeight = 35; // Adjust as needed
-                    badgeTypeY -= 5; //SCC
+                    //badgeTypeY -= 5; //SCC
                     //gfx.DrawImage(qrCodeImage, new XPoint(220, badgeTypeY-20));
                     //gfx.DrawImage(qrCodeImage, new XRect(220, badgeTypeY - 30, targetWidth, targetHeight)); //PSC
-                    //gfx.DrawImage(qrCodeImage, new XRect(205, badgeTypeY - 30, targetWidth, targetHeight)); //ANC
+                    gfx.DrawImage(qrCodeImage, new XRect(205, badgeTypeY - 27, targetWidth, targetHeight)); //ANC
                     //gfx.DrawImage(qrCodeImage, new XRect(215, badgeTypeY - 27, targetWidth, targetHeight)); //PC
-                    gfx.DrawImage(qrCodeImage, new XRect(215, badgeTypeY, targetWidth, targetHeight)); //SCC
+                    //gfx.DrawImage(qrCodeImage, new XRect(215, badgeTypeY, targetWidth, targetHeight)); //SCC
                     gfx.Dispose();
                 }
                 return document;
