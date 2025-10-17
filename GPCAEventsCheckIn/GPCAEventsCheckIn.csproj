@@ -27,6 +27,7 @@
     <None Remove="Assets\Images\Badges\img_2024_scc.png" />
     <None Remove="Assets\Images\Badges\img_2025_anc.png" />
     <None Remove="Assets\Images\Badges\img_2025_pc.jpg" />
+    <None Remove="Assets\Images\Badges\img_2025_rcc.png" />
     <None Remove="Assets\Images\Badges\img_2025_scc.jpg" />
     <None Remove="Assets\Images\Badges\Sponsor\acwa.png" />
     <None Remove="Assets\Images\Badges\Sponsor\reviva.png" />
@@ -43,6 +44,7 @@
     <None Remove="Assets\Images\Banners\img_2024_scc.jpg" />
     <None Remove="Assets\Images\Banners\img_2025_anc.jpg" />
     <None Remove="Assets\Images\Banners\img_2025_pc.jpg" />
+    <None Remove="Assets\Images\Banners\img_2025_rcc.jpg" />
     <None Remove="Assets\Images\Banners\img_2025_scc.jpg" />
     <None Remove="Assets\Images\Common\AF\img_company_name.png" />
     <None Remove="Assets\Images\Common\AF\img_name_of_attendee.png" />
@@ -68,6 +70,11 @@
     <None Remove="Assets\Images\Common\PC\img_scan_qr.png" />
     <None Remove="Assets\Images\Common\PC\img_search.png" />
     <None Remove="Assets\Images\Common\PC\img_transaction_id.png" />
+    <None Remove="Assets\Images\Common\RCC\img_company_name.png" />
+    <None Remove="Assets\Images\Common\RCC\img_name_of_attendee.png" />
+    <None Remove="Assets\Images\Common\RCC\img_scan_qr.png" />
+    <None Remove="Assets\Images\Common\RCC\img_search.png" />
+    <None Remove="Assets\Images\Common\RCC\img_transaction_id.png" />
     <None Remove="Assets\Images\Common\SCC\img_company_name.png" />
     <None Remove="Assets\Images\Common\SCC\img_name_of_attendee.png" />
     <None Remove="Assets\Images\Common\SCC\img_scan_qr.png" />
@@ -111,6 +118,7 @@
     </DesignDataWithDesignTimeCreatableTypes>
     <Resource Include="Assets\Images\Badges\img_2025_anc.png" />
     <Resource Include="Assets\Images\Badges\img_2025_pc.jpg" />
+    <Resource Include="Assets\Images\Badges\img_2025_rcc.png" />
     <Resource Include="Assets\Images\Badges\img_2025_scc.jpg" />
     <Resource Include="Assets\Images\Badges\Sponsor\acwa.png" />
     <Resource Include="Assets\Images\Badges\Sponsor\sabic.png" />
@@ -127,6 +135,7 @@
     <Resource Include="Assets\Images\Banners\img_2024_scc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2025_anc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2025_pc.jpg" />
+    <Resource Include="Assets\Images\Banners\img_2025_rcc.jpg" />
     <Resource Include="Assets\Images\Banners\img_2025_scc.jpg" />
     <Resource Include="Assets\Images\Common\AF\img_company_name.png" />
     <Resource Include="Assets\Images\Common\AF\img_name_of_attendee.png" />
@@ -150,6 +159,11 @@
     <Resource Include="Assets\Images\Common\PC\img_scan_qr.png" />
     <Resource Include="Assets\Images\Common\PC\img_search.png" />
     <Resource Include="Assets\Images\Common\PC\img_transaction_id.png" />
+    <Resource Include="Assets\Images\Common\RCC\img_company_name.png" />
+    <Resource Include="Assets\Images\Common\RCC\img_name_of_attendee.png" />
+    <Resource Include="Assets\Images\Common\RCC\img_scan_qr.png" />
+    <Resource Include="Assets\Images\Common\RCC\img_search.png" />
+    <Resource Include="Assets\Images\Common\RCC\img_transaction_id.png" />
     <Resource Include="Assets\Images\Common\SCC\img_company_name.png" />
     <Resource Include="Assets\Images\Common\SCC\img_name_of_attendee.png" />
     <Resource Include="Assets\Images\Common\SCC\img_scan_qr.png" />

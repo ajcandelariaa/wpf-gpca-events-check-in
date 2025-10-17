@@ -70,16 +70,19 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string accessType = _mainViewModel.CurrentAttendee.AccessType;
                 //string accessType = "";
 
-                XFont fullNameFont = new XFont("Arial", 21, XFontStyleEx.Bold); //ANC & PC
-                XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //ANC & PC
-                XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //ANC & PC
+                XFont fullNameFont = new XFont("Arial", 19, XFontStyleEx.Bold); //RCC
+                XFont jobTitleFont = new XFont("Arial", 11, XFontStyleEx.Italic); //RCC
+                XFont companyNameFont = new XFont("Arial", 11, XFontStyleEx.Bold); //RCC
+                //XFont fullNameFont = new XFont("Arial", 24, XFontStyleEx.Bold); //ANC & PC
+                //XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //ANC & PC
+                //XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //ANC & PC
                 //XFont fullNameFont = new XFont("Arial", 21, XFontStyleEx.Bold); //PSC 
                 //XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //PSC
                 //XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //PSC
                 //XFont fullNameFont = new XFont("Arial", 18, XFontStyleEx.Bold); //SCC
                 //XFont jobTitleFont = new XFont("Arial", 11, XFontStyleEx.Italic); //SCC
                 //XFont companyNameFont = new XFont("Arial", 11, XFontStyleEx.Bold); //SCC
-                XFont badgeTypeFont = new XFont("Arial", 11, XFontStyleEx.Bold);
+                XFont badgeTypeFont = new XFont("Arial", 10, XFontStyleEx.Bold);
                 //XFont sponsorTextFont = new XFont("Arial", 7, XFontStyleEx.Bold);
                 XFont accessTypeFont = new XFont("Arial", 9, XFontStyleEx.Italic);
 
@@ -88,7 +91,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
 
                 using (var gfx = XGraphics.FromPdfPage(page))
                 {
-                    int jobTitleMarginTop = 8; // ANC & PC
+                    int jobTitleMarginTop = 4; // RCC
+                    //int jobTitleMarginTop = 8; // ANC & PC
                     //int jobTitleMarginTop = 0; // PSC & SCC
                     int companyMarginTop = 2;
 
@@ -149,9 +153,14 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     //var boxH = 130;
 
                     //FOR ANC EVENT
-                    var yPos = 210;
+                    //var yPos = 210;
+                    //var boxW = 252;
+                    //var boxH = 135;
+
+                    //FOR RCC EVENT
+                    var yPos = 220;
                     var boxW = 252;
-                    var boxH = 135;
+                    var boxH = 130;
 
                     //FOR PSC EVENT
                     //var yPos = 250;
