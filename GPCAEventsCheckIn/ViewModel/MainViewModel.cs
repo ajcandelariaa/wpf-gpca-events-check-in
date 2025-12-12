@@ -9,6 +9,7 @@ namespace GPCAEventsCheckIn.ViewModel
     public class MainViewModel : BaseViewModel
     {
         private AttendeeViewModel _attendeeViewModel;
+        private OnsiteRegistrationViewModel _onsiteRegistrationViewModel;
         private UserControl _currentView;
         private string _previousView;
         private AttendeeModel _currentAttendee;
@@ -172,6 +173,28 @@ namespace GPCAEventsCheckIn.ViewModel
             CurrentView = new AttendeeDetailsView(this);
         }
 
+        public void NavigateToAddAttendeeView(string previousView)
+        {
+            PreviousView = previousView;
+            CurrentView = new AddAttendeeView(this);
+        }
+        public void NavigateToOnsiteConfirmView(string previousView)
+        {
+            PreviousView = previousView;
+            CurrentView = new OnsiteConfirmView(this);
+        }
+
+
+        public OnsiteRegistrationViewModel OnsiteRegistrationViewModel
+        {
+            get => _onsiteRegistrationViewModel;
+            set
+            {
+                _onsiteRegistrationViewModel = value;
+                OnPropertyChanged(nameof(OnsiteRegistrationViewModel));
+            }
+        }
+
         public MainViewModel()
         {
             string pcName = ConfigurationManager.AppSettings["PCName"];
@@ -183,6 +206,7 @@ namespace GPCAEventsCheckIn.ViewModel
             } else
             {
                 AttendeeViewModel = new AttendeeViewModel(this);
+                OnsiteRegistrationViewModel = new OnsiteRegistrationViewModel(this);
                 //NavigateToHomeView();
                 NavigateToSearchCategoryViewV2();
             }

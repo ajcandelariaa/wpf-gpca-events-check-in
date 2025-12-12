@@ -75,7 +75,7 @@
                                 </Grid>
                             </Border>
 
-                            <!--<Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
+                            <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
                                 <Grid Margin="10 0 10 0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="3*"/>
@@ -84,7 +84,7 @@
                                     <TextBlock Text="Seat Number:" FontSize="16" FontWeight="Bold" />
                                     <TextBlock Grid.Column="1" Text="{Binding CurrentAttendee.SeatNumber}" FontSize="16" TextWrapping="Wrap"/>
                                 </Grid>
-                            </Border>-->
+                            </Border>
 
                             <Border Background="#f2f2f3" CornerRadius="20" Padding="10" Margin="0 10 0 0">
                                 <Grid Margin="10 0 10 0">

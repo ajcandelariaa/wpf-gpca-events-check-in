@@ -43,6 +43,15 @@ namespace GPCAEventsCheckIn.View.UserControl
             selectCompanyNameView.Topmost = true;
             selectCompanyNameView.ShowDialog();
         }
+        private void Btn_OnsiteRegistration(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _mainViewModel.BackDropStatus = "Visible";
+            OnsiteRegistrationLogin onsiteRegistrationLogin = new OnsiteRegistrationLogin(_mainViewModel);
+            onsiteRegistrationLogin.Owner = Application.Current.MainWindow;
+            onsiteRegistrationLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            onsiteRegistrationLogin.Topmost = true;
+            onsiteRegistrationLogin.ShowDialog();
+        }
 
         private void Btn_Refresh(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

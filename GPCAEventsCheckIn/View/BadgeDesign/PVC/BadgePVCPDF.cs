@@ -68,11 +68,17 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 string companyName = _mainViewModel.CurrentAttendee.CompanyName;
                 string badgeType = _mainViewModel.CurrentAttendee.BadgeType;
                 string accessType = _mainViewModel.CurrentAttendee.AccessType;
+                string seatNumber = _mainViewModel.CurrentAttendee.SeatNumber;
                 //string accessType = "";
 
+                if (seatNumber == "N/A")
+                {
+                    seatNumber = "";
+                }
+
                 XFont fullNameFont = new XFont("Arial", 19, XFontStyleEx.Bold); //RCC
-                XFont jobTitleFont = new XFont("Arial", 11, XFontStyleEx.Italic); //RCC
-                XFont companyNameFont = new XFont("Arial", 11, XFontStyleEx.Bold); //RCC
+                XFont jobTitleFont = new XFont("Arial", 12, XFontStyleEx.Italic); //RCC
+                XFont companyNameFont = new XFont("Arial", 12, XFontStyleEx.Bold); //RCC
                 //XFont fullNameFont = new XFont("Arial", 24, XFontStyleEx.Bold); //ANC & PC
                 //XFont jobTitleFont = new XFont("Arial", 13, XFontStyleEx.Italic); //ANC & PC
                 //XFont companyNameFont = new XFont("Arial", 13, XFontStyleEx.Bold); //ANC & PC
@@ -85,7 +91,11 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 XFont badgeTypeFont = new XFont("Arial", 10, XFontStyleEx.Bold);
                 //XFont sponsorTextFont = new XFont("Arial", 7, XFontStyleEx.Bold);
                 XFont accessTypeFont = new XFont("Arial", 9, XFontStyleEx.Italic);
+                XFont seatNumberFont = new XFont("Arial", 11, XFontStyleEx.Bold);
 
+
+                //FOR BADGE TYPE
+                XImage badgeTypeLogo = GetBadgeTypeImage(badgeType);
 
                 string[] completeDetails = [fullName, jobTitle, companyName];
 
@@ -178,7 +188,18 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     //double targetHeight2 = 30; // Adjust as needed
                     //gfx.DrawImage(badgeSponsorLogo, new XRect(180, yPos - 46, targetWidth2, targetHeight2));
 
-                    XRect rectFront = new XRect(0, yPos, boxW, boxH + jobTitleMarginTop + companyMarginTop);
+                    // BADGE TYPE (keep aspect ratio)
+                    double desiredHeight = 25; // change as you like
+                    double scale = desiredHeight / badgeTypeLogo.PixelHeight;
+                    double desiredWidth = badgeTypeLogo.PixelWidth * scale;
+
+                    // Example: draw relative to name (using yPos) 
+                    double x = 27;          // adjust to move left/right
+                    double y = yPos - 50;    // adjust to move up/down
+                    gfx.DrawImage(badgeTypeLogo, new XRect(x, y, desiredWidth, desiredHeight));
+
+
+                    XRect rectFront = new XRect(0, yPos - 20, boxW, boxH + jobTitleMarginTop + companyMarginTop + 20);
                     //gfx.DrawRectangle(XPens.Black, rectFront); //just for placeholder
 
                     //So bali dito cinacalculate natin yung content height para maicenter sa rectangle height, yung +13 manual lang yan
@@ -222,7 +243,7 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     double badgeTypeY = lineY + 10;  //ANC & PC 
                     //double badgeTypeY = lineY - 10;  //SCC
                     //gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY + 5); // SCC
-                    gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY); //ANC
+                    //gfx.DrawString(badgeType, badgeTypeFont, new XSolidBrush(xCustomColor), badgeTypeX, badgeTypeY); //ANC
 
                     //Para sa access type
                     double lineY2 = yPos + boxH + 20; //ANC & PC
@@ -233,7 +254,8 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                     //double accessTypeY = lineY2 + 42; // SCC
                     //double accessTypeY = lineY2 + 18; // PSC
                     double accessTypeY = lineY2 + 15; // ANC
-                    gfx.DrawString(accessType, accessTypeFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
+                    //gfx.DrawString(accessType, accessTypeFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
+                    gfx.DrawString(seatNumber, seatNumberFont, new XSolidBrush(xCustomColor), accessTypeX, accessTypeY);
 
                     //Para sa QR Code
                     double targetWidth = 35; // Adjust as needed
@@ -256,5 +278,40 @@ namespace GPCAEventsCheckIn.View.BadgeDesign.PVC
                 return null;
             }
         }
+
+        private XImage GetBadgeTypeImage(string badgeType)
+        {
+            string imageName = badgeType.ToUpper() switch
+            {
+                "SPEAKER" => "speaker.png",
+                "DELEGATE" => "delegate.png",
+                "PREMIERE DELEGATE" => "premiere-delegate.png",
+                "MEDIA" => "media.png",
+                "ORGANIZER" => "organizer.png",
+                "CONTRACTOR" => "contractor.png",
+                "VVIP" => "vvip.png",
+                "VIP" => "vip.png",
+                "EXHIBITOR" => "exhibitor.png",
+                "YOUTH FORUM" => "youth-forum.png",
+                "YOUTH COUNCIL" => "youth-council.png",
+
+                _ => "default.png"
+            };
+
+            string packPath =
+                $"pack://application:,,,/GPCAEventsCheckIn;component/Assets/Images/Badges/Type/{imageName}";
+
+            Uri uri = new Uri(packPath, UriKind.Absolute);
+            BitmapImage bitmap = new BitmapImage(uri);
+
+            using MemoryStream ms = new MemoryStream();
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmap));
+            encoder.Save(ms);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            return XImage.FromStream(ms);
+        }
+
     }
 }
